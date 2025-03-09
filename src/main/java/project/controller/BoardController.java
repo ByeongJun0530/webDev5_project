@@ -20,13 +20,13 @@ public class BoardController {
     }
     // 게시물 전체 조회
     @GetMapping("/board/findall.do")
-    public List<BoardDto> findAll(){
-        return boardService.findAll();
+    public List<BoardDto> boardFindAll(){
+        return boardService.boardFindAll();
     }
     // 게시물 개별 조회
     @GetMapping("/board/find.do")
-    public BoardDto find(@RequestParam int bno){
-        return boardService.find(bno);
+    public BoardDto boardFind(@RequestParam int bno){
+        return boardService.boardFind(bno);
     }
     // 게시물 수정
     @PutMapping("/board/update.do")

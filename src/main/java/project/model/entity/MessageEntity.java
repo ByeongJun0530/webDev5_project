@@ -9,4 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageEntity {
+    private int mno;
 }

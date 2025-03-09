@@ -9,15 +9,15 @@ import java.util.Map;
 @Mapper
 public interface BoardMapper {
     // 게시물 등록
-    boolean save(BoardDto boardDto);
+    boolean boardWrite(BoardDto boardDto);
     // 게시물 전체 조회
-    List<BoardDto> findAll();
+    List<BoardDto> boardFindAll();
     // 게시물 개별 조회
-    BoardDto find(int bno);
+    BoardDto boardFind(int bno);
     // 게시물 수정
-    boolean update(BoardDto boardDto);
+    boolean boardUpdate(BoardDto boardDto);
     // 게시물 삭제
-    boolean delete(int bno);
+    boolean boardDelete(int bno);
     // 댓글 쓰기
     boolean replyWrite(Map<String, String> replyDto);
     // 댓글 출력

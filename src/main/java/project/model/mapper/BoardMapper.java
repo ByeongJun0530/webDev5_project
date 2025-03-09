@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import project.model.dto.BoardDto;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface BoardMapper {
@@ -17,4 +18,8 @@ public interface BoardMapper {
     boolean update(BoardDto boardDto);
     // 게시물 삭제
     boolean delete(int bno);
+    // 댓글 쓰기
+    boolean replyWrite(Map<String, String> replyDto);
+    // 댓글 출력
+    List<Map<String,String>> replyFindAll(int bno);
 }

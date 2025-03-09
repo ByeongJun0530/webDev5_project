@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import project.model.dto.BoardDto;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardService {
@@ -32,4 +33,14 @@ public class BoardService {
     public boolean boardDelete(int bno){
         return boardService.boardDelete(bno);
     }
+
+    // 댓글 쓰기
+    public boolean replyWrite(Map<String, String> replyDto){
+        return boardService.replyWrite(replyDto);
+    }
+    // 특정 게시물 댓글 조회
+    public List<Map<String, String>> replyFindAll(int bno){
+        return boardService.replyFindAll(bno);
+    }
+
 }

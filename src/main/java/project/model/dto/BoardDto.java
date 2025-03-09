@@ -3,6 +3,8 @@ package project.model.dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 @Getter@Setter@ToString@Builder
 @NoArgsConstructor@AllArgsConstructor
@@ -16,4 +18,6 @@ public class BoardDto {
     private String cname; // 카테고리 이름 fk
     private LocalDate cdate; // 등록일자
     private LocalDate mdate; // 수정일자
+
+    private List<Map<String, String>> replylist; // 댓글
 }

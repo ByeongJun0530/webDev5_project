@@ -8,25 +8,26 @@
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
 
     <!-- 카카오 지도 api 시작 -->
+  </head>
+  <body>
+    <div id="map" style="width: 800px; height: 700px"></div>
+
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=709454abbec211096eb07f4cf2d347db"
     ></script>
-  </head>
-  <body>
-    //지도 담을 영역
-    <div id="map" style="width: 500px; height: 400px"></div>
 
     <script>
-      var container = document.getElementById("map"); //지도를 담을 영역의 DOM레퍼런스
+      var container = document.getElementById("map");
       var options = {
-        //지도를 생성할 때 필요한 기본 옵션
-        center: newkakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-        level: 3, //지도의 레벨(확대, 축소 정도)
+        //초기값 부평역으로
+        center: new kakao.maps.LatLng(37.489572382, 126.723325411),
+        level: 6,
       };
-      var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+      var map = new kakao.maps.Map(container, options);
     </script>
 
-    <script src="/src/main/resources/static/js/api.js"></script>
+    <script src="/js/api.js"></script>
   </body>
 </html>

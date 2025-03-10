@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import project.model.dto.MessageDto;
 
 @Getter
 @Setter
@@ -37,5 +38,20 @@ public class MessageEntity {
     private boolean deleteBySender;
     @Column(nullable = false)
     private boolean deleteByReceiver;
+
+    public void deleteBySender() {this.deleteBySender = true;}
+    public void  deleteByReceiver() {this.deleteByReceiver();}
+    public boolean isDeleted(){return isDeleteBySender() && isDeleteByReceiver();}
+
+    // entity -> dto
+    public MessageDto toDto() {
+        return MessageDto.builder()
+                .meno(this.meno)
+                .metitle(this.metitle)
+                .mecontent(this.mecontent)
+                .receivermno(this.receivermno.getMno())
+                .sendermno(this.sendermno.getMno())
+                .build();
+    }
 
 }

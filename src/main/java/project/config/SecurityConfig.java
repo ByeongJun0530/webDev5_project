@@ -19,15 +19,17 @@ public class SecurityConfig {
         // HTTP URL 요청에 따른 부여된 권한/상태 확인 후 자원 허가 제한
         http.authorizeHttpRequests((httpReq) -> {
             httpReq
-                    .requestMatchers(AntPathRequestMatcher.antMatcher("/chat")).hasRole("USER"); // 임시
+                    .requestMatchers(AntPathRequestMatcher.antMatcher("/chat")).hasRole("USER") // 임시
+                    .requestMatchers(AntPathRequestMatcher.antMatcher("/admin")).hasAnyRole("admin") // 관리자ㅏ 접근
+                    .requestMatchers(AntPathRequestMatcher.antMatcher("/**")).permitAll();
         });
         http.csrf(AbstractHttpConfigurer :: disable); // csrf 끄기 (개발시에만)
 
-        // [5] 로그인 , 시큐리티에 로그인 기능 [커스텀] 을 제공한다. JSON 형식 아닌 form 형식으로 지원한다.
+        // [5] 로그인 , 시큐리티에 로그인 기능 [커스텀] 을 제공 JSON 형식 아닌 form 형식으로 지원
         http.formLogin( loginForm -> loginForm
                 .loginPage("/member/login") // 로그인을 할 view page url 정의
                 .loginProcessingUrl("/member/login.do") // 로그인을 처리할 요청 URL 정의 // POST 방식
-                .usernameParameter("mid")   // 로그인에 사용할 id 변수명
+                .usernameParameter("memail")   // 로그인에 사용할 id 변수명
                 .passwordParameter("mpwd")  // 로그인에 사용한 password 변수명
                 //.defaultSuccessUrl("/") // 만약에 로그인 성공시 이동할 page url 정의
                 //.failureUrl("/member/login") // 만약에 로그인 실패시 이동할 page url 정의

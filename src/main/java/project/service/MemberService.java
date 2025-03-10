@@ -22,6 +22,10 @@ public class MemberService implements UserDetailsService {
     // 회원 가입
     @Transactional
     public boolean signup(MemberDto memberDto){
+        // 비밀번호 유효성 검사 추가
+        if(memberDto.getMpwd() == null || memberDto.getMpwd().isEmpty()) {
+            throw new IllegalArgumentException("비밀번호는 필수 입력값입니다.");
+        }
         MemberEntity memberEntity = memberDto.toEntity();
         MemberEntity saveEntity = memberRepository.save(memberEntity);
         return saveEntity.getMno() > 0;

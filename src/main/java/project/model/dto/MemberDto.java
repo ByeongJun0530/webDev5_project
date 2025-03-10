@@ -1,13 +1,27 @@
 package project.model.dto;
 
 import lombok.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import project.model.entity.MemberEntity;
 
 @Getter @Setter @ToString @Builder
 @AllArgsConstructor @NoArgsConstructor
 public class MemberDto {
-    private int mno; // 회원식별번호
-    private String email; // 회원 이메일, 아이디
-    private String name; // 회원 이름
-    private String pwd; // 회원 비번
-    private String phone; // 회원 전화번호
+    private int mno;
+    private String mname;
+    private String memail;
+    private String mpwd;
+    private String mphone;
+
+    // dto --> entity
+    public MemberEntity toEntity(){
+        return MemberEntity.builder()
+                .mno(this.mno)
+                .memail(this.memail)
+                // .mpwd(this.mpwd) // 암호화 전
+                .mpwd(new BCryptPasswordEncoder().encode(this.mpwd))
+                .mname(this.mname)
+                .mphone(this.mphone)
+                .build();
+    }
 }

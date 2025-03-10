@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+
+    <!-- 카카오 지도 api 시작 -->
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=709454abbec211096eb07f4cf2d347db"
+    ></script>
+  </head>
+  <body>
+    //지도 담을 영역
+    <div id="map" style="width: 500px; height: 400px"></div>
+
+    <script>
+      var container = document.getElementById("map"); //지도를 담을 영역의 DOM레퍼런스
+      var options = {
+        //지도를 생성할 때 필요한 기본 옵션
+        center: newkakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+        level: 3, //지도의 레벨(확대, 축소 정도)
+      };
+      var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    </script>
+
+    <script src="/src/main/resources/static/js/api.js"></script>
+  </body>
+</html>

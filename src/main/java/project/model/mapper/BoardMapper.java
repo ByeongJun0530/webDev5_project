@@ -1,6 +1,7 @@
 package project.model.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import project.model.dto.BoardDto;
 
 import java.util.List;
@@ -11,7 +12,9 @@ public interface BoardMapper {
     // 게시물 등록
     boolean boardWrite(BoardDto boardDto);
     // 게시물 전체 조회
-    List<BoardDto> boardFindAll();
+    List<BoardDto> boardFindAll(@Param("limit") int limit, @Param("offset") int offset);
+    // 전체 게시물 개수 조회
+    int countBoards();
     // 게시물 개별 조회
     BoardDto boardFind(int bno);
     // 게시물 수정

@@ -16,6 +16,13 @@
     <!-- 게시물 전체 조회 -->
     <select id="boardFindAll">
         select* from boards
+        Order By cdate DESC
+        Limit #{limit} Offset #{offset}
+    </select>
+
+    <!-- 전체 게시글 개수 조회 -->
+    <select id="countBoards" >
+        select count(*) from boards
     </select>
 
     <!-- 게시물 개별 조회 -->

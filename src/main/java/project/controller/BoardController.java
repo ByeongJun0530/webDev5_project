@@ -8,6 +8,7 @@ import project.service.BoardService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @RestController
 public class BoardController {
@@ -20,8 +21,8 @@ public class BoardController {
     }
     // 게시물 전체 조회
     @GetMapping("/board/findall.do")
-    public List<BoardDto> boardFindAll(){
-        return boardService.boardFindAll();
+    public Map<String, Object> boardFindAll(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int pageSize){
+        return  boardService.pagedBoards(page, pageSize);
     }
     // 게시물 개별 조회
     @GetMapping("/board/find.do")

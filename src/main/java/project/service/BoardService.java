@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import project.model.dto.BoardDto;
 import project.model.mapper.BoardMapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class BoardService {
@@ -17,8 +19,26 @@ public class BoardService {
         return boardMapper.boardWrite(boardDto);
     }
     // 게시물 전체 조회
+    /*
     public List<BoardDto> boardFindAll(){
         return boardMapper.boardFindAll();
+    }
+     */
+    public Map<String, Object> pagedBoards(int page, int pageSize){
+        int totalBoards = boardMapper.countBoards();
+        int totalPages = (int)Math.ceil((double) totalBoards / pageSize);
+        int offset = (page - 1) * pageSize;
+
+        List<BoardDto> boards = boardMapper.boardFindAll(pageSize, offset);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("boards", boards);
+        result.put("totalBoards", totalBoards);
+        result.put("totalPages", totalPages);
+        result.put("currentPage", page);
+        result.put("pageSize", pageSize);
+
+        return result;
     }
     // 게시물 개별 조회
     public BoardDto boardFind(int bno){

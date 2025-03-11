@@ -6,27 +6,39 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
-
-    <!-- 카카오 지도 api 시작 -->
   </head>
   <body>
-    <div id="map" style="width: 800px; height: 700px"></div>
+    <div class="container">
+      <!-- 헤더 -->
+      <div th:replace="~{ /html/main/header.html :: header }"></div>
+    </div>
 
+    <!-- 지도 표시   -->
+    <div id="map" style="width: 1800px; height: 700px"></div>
+
+    <!-- 카카오 지도 api 시작 -->
     <script
       type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=709454abbec211096eb07f4cf2d347db"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=709454abbec211096eb07f4cf2d347db&libraries=services"
     ></script>
 
-    <script>
-      var container = document.getElementById("map");
-      var options = {
-        //초기값 부평역으로
-        center: new kakao.maps.LatLng(37.489572382, 126.723325411),
-        level: 6,
-      };
+<!--오프캔버스 한뭉텅이-->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel"><span id="center_name">기관 이름 들어가는 곳</span></h5>
+      </div>
 
-      var map = new kakao.maps.Map(container, options);
-    </script>
+      <div class="offcanvas-body">
+        <div>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳1  </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳2 </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳3  </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳4  </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳5  </p>
+        </div>
+      </div>
+    </div>
+
 
     <script src="/js/api.js"></script>
   </body>

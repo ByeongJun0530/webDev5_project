@@ -11,9 +11,9 @@ public class OfficialEntity {
 
     //사업자 번호
     //센터 사업자 번호에 따라 달라질 예정
-//    @Id
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    private int ono;
+    @Id
+
+    private int ono;
 
     //비밀번호
     @Column(columnDefinition = "varchar(30)",nullable = false)

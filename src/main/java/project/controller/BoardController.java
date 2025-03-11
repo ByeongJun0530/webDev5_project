@@ -8,7 +8,6 @@ import project.service.BoardService;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @RestController
 public class BoardController {

@@ -24,5 +24,5 @@ public interface BoardMapper {
     // 댓글 쓰기
     boolean replyWrite(Map<String, String> replyDto);
     // 댓글 출력
-    List<Map<String,String>> replyFindAll(int bno);
+    List<Map<String,String>> replyFindAll(@Param("bno") int bno);
 }

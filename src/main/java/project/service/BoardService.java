@@ -8,7 +8,6 @@ import project.model.mapper.BoardMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 @Service
 public class BoardService {
@@ -31,12 +30,21 @@ public class BoardService {
 
         List<BoardDto> boards = boardMapper.boardFindAll(pageSize, offset);
 
+        // 게시글에 해당하는 댓글 추가
+        /*
+        for(BoardDto board : boards){
+            List<Map<String, String>> replies = boardMapper.replyFindAll(board.getBno());
+            board.setReplylist(replies);
+        }
+        */
+
         Map<String, Object> result = new HashMap<>();
         result.put("boards", boards);
         result.put("totalBoards", totalBoards);
         result.put("totalPages", totalPages);
         result.put("currentPage", page);
         result.put("pageSize", pageSize);
+
 
         return result;
     }

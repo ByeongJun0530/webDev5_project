@@ -2,10 +2,13 @@ package project.service.centerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import project.model.dto.centerDto.CenterDto;
 import project.model.entity.centerEntity.CenterEntity;
 import project.model.repository.centerRepository.CenterRepository;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,18 +18,33 @@ public class CenterService {
     private CenterRepository centerRepository;
 
     // 센터 등록
+//    public boolean upload(CenterDto centerDto, MultipartFile file) {
+//        if (!file.isEmpty()) {
+//            try {
+//                // 파일 저장 로직
+//                String fileName = file.getOriginalFilename();
+//                String filePath = "path/to/save/" + fileName;
+//                file.transferTo(new File(filePath));
+//                centerDto.setPhoto(filePath); // 파일 경로를 DTO에 설정
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                return false;
+//            }
+//        }
+//        CenterEntity centerEntity = centerDto.toEntity();
+//        centerRepository.save(centerEntity);
+//        return true;
+//    }
     public boolean upload(CenterDto centerDto) {
         CenterEntity centerEntity = centerDto.toEntity();
-        // 파일로 저장할떄 여기 사진 저장 코드 추가
         centerRepository.save(centerEntity);
         return true;
     }
 
     // 센터 전체 조회
-    public List<CenterDto> findall() {
+    public List<CenterDto> findAll() {
         List<CenterEntity> centers = centerRepository.findAll();
         return centers.stream().map(CenterEntity::toDto).collect(Collectors.toList());
-        //페이징 처리 추가 & 카테고리 나누면 처리
     }
 
     // 개별 센터 조회
@@ -44,7 +62,6 @@ public class CenterService {
         if (centerEntity != null) {
             CenterEntity updatedCenter = centerDto.toEntity();
             updatedCenter.setCenterno(centerDto.getCenterno());
-            // centerEntity.setPhoto(photoPath); // 파일 저장 경로 설정 필요
             centerRepository.save(updatedCenter);
             return true;
         }

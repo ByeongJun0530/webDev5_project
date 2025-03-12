@@ -14,4 +14,7 @@ public class ViewController {
     @GetMapping("/api")
     public String api(){return "/html/api/api.html";}
 
+    @GetMapping("/board")
+    public String board(){return "/html/main/board/board.html";}
+
 }

@@ -72,7 +72,7 @@ public class MessageService {
             System.out.println("회원 찾음: " + memberOtp.get().getMemail());
             // 받은 메세지 찾기
             // 삭제x 메세지만 반환
-            List<MessageEntity> messageEntities = messageRepository.findByReceiverMnoAndDeletedBySenderFalseAndDeletedByReceiverFalse(memberOtp.get());
+            List<MessageEntity> messageEntities = messageRepository.findByReceivermnoAndDeleteBySenderFalseAndDeleteByReceiverFalse(memberOtp.get());
             System.out.println("찾은 메세지 수: " + messageEntities.size());
 
             // 엔티티 리스트 -> dto
@@ -108,7 +108,7 @@ public class MessageService {
         if(memberOtp.isPresent()){
             System.out.println("회원 찾음: " + memberOtp.get().getMemail());
             // 보낸 메세지 찾기
-            List<MessageEntity> messageEntities = messageRepository.findBySenderMnoAndDeleteBySenderFalseAndDeletedByReceiverFalse(memberOtp.get());
+            List<MessageEntity> messageEntities = messageRepository.findBySendermnoAndDeleteBySenderFalseAndDeleteByReceiverFalse(memberOtp.get());
             System.out.println("찾은 메세지 수 " + messageEntities.size());
 
             // 엔티티 리스트 -> dto

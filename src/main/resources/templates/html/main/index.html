@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>메인페이지</title>
-</head>
-<body>
-  <div class="container">
-    <!-- 헤더 -->
-    <div th:replace="~{ /html/main/header.html :: header }"></div>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>메인페이지</title>
+    <link
+      rel="stylesheet"
+      href="/css/index.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 헤더 -->
+      <div th:replace="~{ /html/main/header.html :: header }"></div>
+    </div>
+
+    <div>메인 화면입니다.</div>
+  </body>
 </html>

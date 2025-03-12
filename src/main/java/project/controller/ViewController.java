@@ -11,4 +11,7 @@ public class ViewController {
     @GetMapping("")
     public String index(){return "/html/main/index.html";}
 
+    @GetMapping("/api")
+    public String api(){return "/html/api/api.html";}
+
 }

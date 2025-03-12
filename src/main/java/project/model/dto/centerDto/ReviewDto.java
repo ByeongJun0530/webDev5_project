@@ -1,6 +1,7 @@
 package project.model.dto.centerDto;
 
 import lombok.*;
+import project.model.entity.centerEntity.CenterEntity;
 import project.model.entity.centerEntity.ReviewEntity;
 
 @Getter
@@ -11,14 +12,15 @@ import project.model.entity.centerEntity.ReviewEntity;
 @AllArgsConstructor
 public class ReviewDto {
     private int reviewno;
-    private int centerno;
     private String reviewText;
     private double rating;
+
+    private int centerno;
+    private int mno;
 
     public ReviewEntity toEntity() {
         return ReviewEntity.builder()
                 .reviewno(this.reviewno)
-                .centerno(this.centerno)
                 .reviewText(this.reviewText)
                 .rating(this.rating)
                 .build();

@@ -1,7 +1,6 @@
 package project.model.dto.centerDto;
 
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 import project.model.entity.centerEntity.CenterEntity;
 
 @Getter
@@ -22,11 +21,12 @@ public class CenterDto {
     private String rating;
     private int capacity;
     private int staff;
-    //private MultipartFile photo; //파일로 사용할 떄
-    private String photo; // 수정 필요
+    private String photo; // 파일 경로를 저장하는 String
 
     private double latitude;
     private double longitude;
+
+    private int mno;
 
     public CenterEntity toEntity() {
         return CenterEntity.builder()
@@ -43,7 +43,7 @@ public class CenterDto {
                 .staff(this.staff)
                 .latitude(this.latitude)
                 .longitude(this.longitude)
-                .photo(this.photo)
+                .photo(this.photo) // 파일 경로 저장
                 .build();
     }
 }

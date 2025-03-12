@@ -40,7 +40,7 @@ public class MessageEntity {
     private boolean deleteByReceiver;
 
     public void deleteBySender() {this.deleteBySender = true;}
-    public void  deleteByReceiver() {this.deleteByReceiver();}
+    public void  deleteByReceiver() {this.deleteByReceiver = true;}
     public boolean isDeleted(){return isDeleteBySender() && isDeleteByReceiver();}
 
     // entity -> dto

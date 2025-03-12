@@ -8,7 +8,7 @@ import project.model.entity.OfficialEntity;
 public class OfficialDto {
     //사업자 번호
     //센터 사업자 번호 들어가는것에 따라 달라짐
-//    private int ono;
+    private int ono;
     //비밀번호
     private String opwd;
     //이메일

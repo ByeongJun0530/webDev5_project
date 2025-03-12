@@ -19,5 +19,5 @@ public class BoardDto {
     private LocalDate cdate; // 등록일자
     private LocalDate mdate; // 수정일자
 
-    private List<Map<String, String>> replylist; // 댓글
+    private List<ReplyDto> replylist; // 댓글
 }

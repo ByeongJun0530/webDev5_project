@@ -50,5 +50,4 @@
         select* from replies where bno = #{bno}
         order by cdate desc
     </select>
-
 </mapper>

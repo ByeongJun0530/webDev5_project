@@ -4,6 +4,7 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import project.model.dto.BoardDto;
+import project.model.dto.ReplyDto;
 import project.service.BoardService;
 
 import java.util.List;
@@ -41,12 +42,12 @@ public class BoardController {
 
     // 댓글 쓰기
     @PostMapping("/reply/write.do")
-    public boolean replyWrite(@RequestBody Map<String, String> replyDto){
+    public boolean replyWrite(@RequestBody ReplyDto replyDto){
         return boardService.replyWrite(replyDto);
     }
     // 특정 게시물 댓글 조회
     @GetMapping("reply/findall.do")
-    public List<Map<String, String>> replyFindAll(@RequestParam int bno){
+    public List<ReplyDto> replyFindAll(@RequestParam int bno){
         return boardService.replyFindAll(bno);
     }
 

@@ -14,6 +14,7 @@ public class ViewController {
     @GetMapping("/api")
     public String api(){return "/html/api/api.html";}
 
+    // 게시물 목록 반환 함수
     @GetMapping("/board")
     public String board(){return "/html/main/board/board.html";}
 

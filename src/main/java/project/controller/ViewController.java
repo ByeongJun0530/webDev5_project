@@ -21,4 +21,8 @@ public class ViewController {
     // 글쓰기 반환 함수
     @GetMapping("/board/write")
     public String boardWrite(){return "/html/main/board/write.html";}
+
+    // 개별 조회 반환
+    @GetMapping("/board/find")
+    public String boardFind(){return "/html/main/board/find.html";}
 }

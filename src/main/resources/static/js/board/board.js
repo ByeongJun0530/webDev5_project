@@ -37,7 +37,7 @@ const boardFindAll = () => {
                     <tr>
                         <td>${board.bno}</td>
                         <td>${board.cname}</td>
-                        <td>${board.btitle}</td>
+                        <td><a href="/board/find?bno=${board.bno}">${board.btitle}</a></td>
                         <td>${board.mid}</td>
                         <td>${board.cdate}</td>
                     </tr>

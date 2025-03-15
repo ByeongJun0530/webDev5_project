@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link href="/css/index.css" rel="stylesheet">
+</head>
+<body>
+  <div th:replace="~{/html/main/header.html :: header}"></div>
+  <div class="container">
+    <!-- 작성자 정보 및 게시글 타입 -->
+    <div class="info">
+      <span class="mid"></span>
+      <span class="cname"></span>
+      <span class="cdate"></span>
+    </div>
+    <!-- 게시글 상세 -->
+    <div>
+      <div class="btitle">제목</div>
+      <div class="bcontent">내용</div>
+    </div>
+
+    <!-- 댓글 작성 구역-->
+    <div>
+      <textarea class="rcontent"></textarea>
+      <button type="button" onclick="replyWrite()">작성</button>
+    </div>
+    <!-- 댓글 출력 구역 -->
+    <div class="replies mt-5">
+
+    </div>
+  </div>
+  <script src="/js/board/find.js"></script>
+</body>
+</html>

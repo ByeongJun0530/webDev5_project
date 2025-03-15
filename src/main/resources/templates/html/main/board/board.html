@@ -8,6 +8,8 @@
     <!-- 헤더 -->
     <div th:replace="~{ /html/main/header.html :: header }"></div>
     <div class="container">
+        <!-- 글쓰기 창 진입 버튼-->
+        <button type="button" class="btn btn-primary" onclick="location.href='/board/write'">글쓰기</button>
         <table class="table">
             <thead>
                 <tr>
@@ -46,7 +48,7 @@
                 <input class="form-control keyword" type="text">
             </div>
             <div class="col-auto">
-                <button type="button" class="btn btn-primary" onclick="onSearch()">검색</button>
+                <button type="button" class="btn btn-primary" onclick="boardSearch()">검색</button>
             </div>
         </div>
 

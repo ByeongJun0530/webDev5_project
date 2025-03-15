@@ -15,14 +15,30 @@
 
     <!-- 게시물 전체 조회 -->
     <select id="boardFindAll">
-        select* from boards
-        Order By cdate DESC
-        Limit #{limit} Offset #{offset}
+        SELECT *
+        FROM boards
+        WHERE 1 = 1
+        <if test="keyword != null and keyword != ''">
+            AND (btitle LIKE CONCAT('%', #{keyword}, '%') OR bcontent LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        <if test="cno != null">
+            AND cno = #{cno}
+        </if>
+        ORDER BY cdate DESC
+        LIMIT #{limit} OFFSET #{offset}
     </select>
 
     <!-- 전체 게시글 개수 조회 -->
-    <select id="countBoards" >
-        select count(*) from boards
+    <select id="countBoards">
+        SELECT count(*)
+        FROM boards
+        WHERE 1 = 1
+        <if test="keyword != null and keyword != ''">
+            AND (btitle LIKE CONCAT('%', #{keyword}, '%') OR bcontent LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        <if test="cno != null">
+            AND cno = #{cno}
+        </if>
     </select>
 
     <!-- 게시물 개별 조회 -->

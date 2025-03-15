@@ -18,4 +18,7 @@ public class ViewController {
     @GetMapping("/board")
     public String board(){return "/html/main/board/board.html";}
 
+    // 글쓰기 반환 함수
+    @GetMapping("/board/write")
+    public String boardWrite(){return "/html/main/board/write.html";}
 }

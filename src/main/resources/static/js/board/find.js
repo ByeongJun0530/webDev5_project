@@ -38,7 +38,9 @@ const replyWrite = () => {
         .then(r => r.json())
         .then(d => {
             if(d == true){
-                alert('댓글 작성 성공')
+                alert('댓글 작성 성공');
+                document.querySelector('.rcontent').value = '';
+                replyFindAll();
             }else{
                 alert('댓글 작성 실패')
             }

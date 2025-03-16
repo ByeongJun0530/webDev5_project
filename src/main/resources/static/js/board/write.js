@@ -12,8 +12,10 @@ const onWrite = () => {
     const cno = document.querySelector('.cno').value;
     const btitle = document.querySelector('.btitle').value;
     const bcontent = document.querySelector('.bcontent').value;
+    const mid = 'asdf'; // 회원 아이디의 임의 값
+    const mno = '1';
     // 객체 만들기
-    const obj = {cno : cno, btitle : btitle, bcontent : bcontent}
+    const obj = {mno : mno, mid : mid, cno : cno, btitle : btitle, bcontent : bcontent}
     // fetch option
     const option = {
         method : 'POST',
@@ -22,14 +24,14 @@ const onWrite = () => {
     }
     // fetch
     fetch('/board/write.do', option)
-        .then(r => r.json)
+        .then(r => r.json())
         .then(d => {
             console.log(d);
             if(d == true){
                 alert('글쓰기 성공')
                 location.href = `/board`
             }else{
-                alert('글쓰기 실패')
+                alert('글쓰기 실패');
             }
         })
         .catch(e => {console.log(e);})

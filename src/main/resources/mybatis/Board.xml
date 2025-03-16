@@ -9,25 +9,45 @@
 <mapper namespace="project.model.mapper.BoardMapper">
     <!-- 게시물 등록 -->
     <insert id="boardWrite">
-        insert into boards (bno, btitle, bcontent, mno, mid, cno, cname, cdate, mdate )
-            values (#{bno}, #{btitle}, #{bcontent}, #{mno}, #{mid}, #{cno}, #{cname}, #{cdate}, #{mdate})
+        insert into boards (btitle, bcontent, mno, mid, cno, cdate, mdate)
+            values (#{btitle}, #{bcontent}, #{mno}, #{mid}, #{cno},now(),now())
     </insert>
 
     <!-- 게시물 전체 조회 -->
     <select id="boardFindAll">
-        select* from boards
-        Order By cdate DESC
-        Limit #{limit} Offset #{offset}
+        SELECT b.*, c.cname
+        FROM boards b
+        LEFT JOIN category c ON b.cno = c.cno
+        WHERE 1 = 1
+        <if test="keyword != null and keyword != ''">
+            AND (btitle LIKE CONCAT('%', #{keyword}, '%') OR bcontent LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        <if test="cno != null">
+            AND cno = #{cno}
+        </if>
+        ORDER BY cdate DESC
+        LIMIT #{limit} OFFSET #{offset}
     </select>
 
     <!-- 전체 게시글 개수 조회 -->
-    <select id="countBoards" >
-        select count(*) from boards
+    <select id="countBoards">
+        SELECT count(*)
+        FROM boards
+        WHERE 1 = 1
+        <if test="keyword != null and keyword != ''">
+            AND (btitle LIKE CONCAT('%', #{keyword}, '%') OR bcontent LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        <if test="cno != null">
+            AND cno = #{cno}
+        </if>
     </select>
 
     <!-- 게시물 개별 조회 -->
     <select id="boardFind">
-        select* from boards where bno = #{bno}
+        SELECT b.*, c.cname
+        FROM boards b
+        LEFT JOIN category c ON b.cno = c.cno
+        WHERE b.bno = #{bno}
     </select>
 
     <!-- 게시물 수정 -->
@@ -42,7 +62,7 @@
 
     <!-- 댓글 쓰기 -->
     <insert id="replyWrite">
-        insert into replies (rno, mid, rcontent, bno, cdate) values (#{rno}, #{mid}, #{rcontent}, #{bno}, #{cdate})
+        insert into replies (rno, mid, rcontent, bno, cdate) values (#{rno}, #{mid}, #{rcontent}, #{bno}, now())
     </insert>
 
     <!-- 게시글 별 댓글 조회 -->

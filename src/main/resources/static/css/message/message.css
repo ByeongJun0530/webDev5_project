@@ -1,0 +1,65 @@
+/* 메시지 시스템 스타일 */
+.message-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+}
+
+/* 페이지네이션 스타일 */
+.pagebox {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+/* 메시지 상세 내용 스타일 */
+.message-info {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* 버튼 스타일 */
+.btn-info {
+  color: #fff;
+}
+
+/* 모달 내 내용 스타일 */
+.modal-body .message-content {
+  min-height: 200px;
+  overflow-y: auto;
+}
+
+/* 썸머노트 에디터 높이 조정 */
+.note-editor.note-frame {
+  min-height: 200px;
+}
+
+/* 썸머노트 에디터 내용 영역 높이 조정 */
+.note-editable {
+  min-height: 200px;
+}
+
+/* 유효성 검사 메시지 스타일 */
+.form-text.text-success {
+  color: #198754;
+}
+
+.form-text.text-danger {
+  color: #dc3545;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+  .table th, .table td {
+    font-size: 0.85rem;
+  }
+
+  .btn-sm {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.75rem;
+  }
+}

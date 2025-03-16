@@ -16,7 +16,15 @@ public class MemberController {
         return memberService.signup(memberDto);
     }
 
-    // 현재 로그인된 회원 아이디 http 매핑
+    // 로그인
+    @PostMapping("/login")
+    public boolean login(@RequestBody MemberDto memberDto){return memberService.login(memberDto);}
+
+    // 로그아웃
+    @GetMapping("/logout")
+    public boolean logout(){return memberService.deleteSession();}
+
+    // 현재 로그인된 회원 조회
     @GetMapping("login/id.do")
     public String loginId() {
         return memberService.getSession();

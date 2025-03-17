@@ -1,3 +1,28 @@
-body {
-  background-color: #f0f0f0;
+/*폰트*/
+@font-face {
+    font-family: 'SF_HambakSnow';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 모든 폰트 적용 */
+*{font-family: 'SF_HambakSnow';
+font-weight: bold;
+}
+
+.info{
+    margin-top : 50px;
+    display : flex;
+    justify-content : space-between;
+}
+.btitle{
+    margin-top : 20px;
+    text-align : center;
+    font-size : 25px;
+}
+
+.bcontent{
+    margin-top : 15px;
+    mid-height : 300px
 }

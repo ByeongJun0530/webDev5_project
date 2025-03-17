@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 작성</title>
+
+    <!-- 썸머노트 css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.css" />
+</head>
+<body>
+    <!-- 헤더 html -->
+    <div th:replace="~{ /html/main/header.html :: header }"></div>
+    <div class="container"> <!-- container 부트스트랩 css -->
+        <form>
+            <select class="form-select cno">
+                <option value="1">공지사항</option>
+                <option value="2">Q&A</option>
+                <option value="3">리뷰</option>
+                <option value="4">기타</option>
+            </select><br/>
+            <input type="text" class="form-control btitle"/><br/>
+            <!-- 썸머노트 id가 포함된 마크업 넣기 -->
+            <textarea id="summernote" name="editordata" class="bcontent"></textarea>
+            <button class="btn btn-primary" type="button" onclick="onWrite()">등록</button>
+        </form>
+    </div>
+    <!-- JQUERY 자바스크립트 기반의 라이브러리 최신 버전 임포트 -->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <!-- 썸머노트 api에 필요한 js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.js" ></script>
+    <!-- 한글 메뉴 임포트 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/lang/summernote-ko-KR.min.js"></script>
+    <!-- 내가 만든 js -->
+    <script src="/js/board/write.js"></script>
+</body>
+</html>

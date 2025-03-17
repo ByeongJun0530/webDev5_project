@@ -1,0 +1,10 @@
+.carousel-inner {
+      text-align: left;
+}
+
+.carousel-item > img {
+      width: 80%;
+      height: 300px; /* 이미지 높이 조정 */
+      object-fit: contain; /* 비율 유지하며 크기에 맞게 조정 */
+}
+

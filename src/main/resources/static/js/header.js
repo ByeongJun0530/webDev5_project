@@ -85,7 +85,7 @@ function updateHeaderForLoggedIn(userData) {
  */
 function updateHeaderForLoggedOut() {
     // navbar-collapse 요소 선택
-    const navbarCollapse = document.getElementById('navbarNavDropdown');
+    const navbarCollapse = document.getElementById('navbarNavDropdown'); // 이거 없는거 같습니다
 
     if (navbarCollapse) {
         // 기존의 인증 관련 메뉴 제거

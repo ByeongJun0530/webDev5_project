@@ -21,7 +21,7 @@ public class BoardController {
     }
     // 게시물 전체 조회
     @GetMapping("/board/findall.do")
-    public Map<String, Object> boardFindAll(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int pageSize,
+    public Map<String, Object> boardFindAll(@RequestParam(defaultValue = "1") int page, @RequestParam int pageSize,
                                             @RequestParam(required = false, defaultValue = "") String keyword,
                                             @RequestParam(required = false, defaultValue = "") Integer cno)
     {return  boardService.pagedBoards(page, pageSize, keyword, cno);}

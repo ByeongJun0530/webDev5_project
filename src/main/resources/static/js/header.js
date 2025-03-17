@@ -29,7 +29,7 @@ function checkLoginStatus() {
  * @param {Object} userData - 사용자 정보
  */
 function updateHeaderForLoggedIn(userData) {
-    const authNav = document.querySelector('.navbar-nav:not(.me-auto)');
+    const authNav = document.querySelector('.member');
 
     if (authNav) {
         // 기존 링크 제거
@@ -53,7 +53,7 @@ function updateHeaderForLoggedIn(userData) {
  * 로그아웃 상태일 때 헤더 메뉴 업데이트
  */
 function updateHeaderForLoggedOut() {
-    const authNav = document.querySelector('.navbar-nav:not(.me-auto)');
+    const authNav = document.querySelector('.member');
 
     if (authNav) {
         // 기존 링크 제거

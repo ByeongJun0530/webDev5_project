@@ -26,3 +26,9 @@ font-weight: bold;
     margin-top : 15px;
     mid-height : 300px
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 90px;
+}

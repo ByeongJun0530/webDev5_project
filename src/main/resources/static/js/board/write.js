@@ -12,10 +12,8 @@ const onWrite = () => {
     const cno = document.querySelector('.cno').value;
     const btitle = document.querySelector('.btitle').value;
     const bcontent = document.querySelector('.bcontent').value;
-    const mid = 'asdf'; // 회원 아이디의 임의 값
-    const mno = '1';
     // 객체 만들기
-    const obj = {mno : mno, mid : mid, cno : cno, btitle : btitle, bcontent : bcontent}
+    const obj = {cno : cno, btitle : btitle, bcontent : bcontent}
     // fetch option
     const option = {
         method : 'POST',

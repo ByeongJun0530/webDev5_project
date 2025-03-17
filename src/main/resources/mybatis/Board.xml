@@ -9,8 +9,8 @@
 <mapper namespace="project.model.mapper.BoardMapper">
     <!-- 게시물 등록 -->
     <insert id="boardWrite">
-        insert into boards (btitle, bcontent, mno, mid, cno, cdate, mdate)
-            values (#{btitle}, #{bcontent}, #{mno}, #{mid}, #{cno},now(),now())
+        insert into boards (btitle, bcontent, mno, memail, cno, cdate, mdate)
+            values (#{btitle}, #{bcontent}, #{mno}, #{memail}, #{cno},now(),now())
     </insert>
 
     <!-- 게시물 전체 조회 -->
@@ -62,7 +62,7 @@
 
     <!-- 댓글 쓰기 -->
     <insert id="replyWrite">
-        insert into replies (rno, mid, rcontent, bno, cdate) values (#{rno}, #{mid}, #{rcontent}, #{bno}, now())
+        insert into replies (rno, memail, rcontent, bno, cdate) values (#{rno}, #{memail}, #{rcontent}, #{bno}, now())
     </insert>
 
     <!-- 게시글 별 댓글 조회 -->

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import project.model.dto.BoardDto;
 import project.model.dto.ReplyDto;
 import project.model.mapper.BoardMapper;
+import project.model.repository.MemberRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,9 +14,16 @@ import java.util.Map;
 @Service
 public class BoardService {
     @Autowired private BoardMapper boardMapper;
-
+    @Autowired private MemberService memberService;
+    @Autowired private MemberRepository memberRepository;
     // 게시물 등록
     public boolean boardWrite(BoardDto boardDto){
+        if (memberService.getSession() != null){
+            String memail = memberRepository.findByMemail(memberService.getSession()).getMemail();
+            boardDto.setMemail(memail);
+        }else {
+            System.out.println("로그인 정보가 없습니다.");
+        }
         return boardMapper.boardWrite(boardDto);
     }
     // 게시물 전체 조회
@@ -62,6 +70,10 @@ public class BoardService {
 
     // 댓글 쓰기
     public boolean replyWrite(ReplyDto replyDto){
+        if (memberService.getSession() != null){
+            String memail = memberRepository.findByMemail(memberService.getSession()).getMemail();
+            replyDto.setMemail(memail);
+        }
         return boardMapper.replyWrite(replyDto);
     }
     // 특정 게시물 댓글 조회

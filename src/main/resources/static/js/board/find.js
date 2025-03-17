@@ -10,7 +10,7 @@ const boardFind = () => {
         .then(d => {
             console.log(d); // 데이터 입출력 확인
             // 회원정보 및 게시글 정보
-            document.querySelector('.mid').innerHTML = d.mid;
+            document.querySelector('.memail').innerHTML = d.memail;
             document.querySelector('.cname').innerHTML = d.cname;
             document.querySelector('.cdate').innerHTML = d.cdate;
             // 본문
@@ -63,7 +63,7 @@ const replyFindAll = () => {
                 html += `<div class="card mt-3">
                     <div class="card-header">
                         <img src="/img/${reply.mimg}" style="width:30px;">
-                        ${reply.mid}
+                        ${reply.memail}
                     </div>
                     <div class="card-body">
                         ${reply.rcontent}

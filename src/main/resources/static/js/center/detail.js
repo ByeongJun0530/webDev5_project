@@ -27,7 +27,7 @@ const fetchCenterDetails = () => {
       const html = `
       <div class="centerInfo">
         <h1>${data.name}</h1>
-        <img src=${data.photo} alt="사진 꺠짐" />
+        <img src=/img/center/${data.photo}.jpg alt="사진 꺠짐" />
         <div>
           <p><strong>주소</strong></p>
           <span>${data.address}</span>
@@ -61,12 +61,21 @@ const fetchCenterDetails = () => {
           <span>${data.staff}</span>
         </div>
       </div>
+      <div class="review-form">
+        <h5>후기 작성</h5>
+        <textarea id="reviewText" rows="4" cols="50" placeholder="후기를 작성하세요"></textarea>
+        <button id="submitReview">제출</button>
+      </div>
       <div class="reviews">
       </div>
       `;
       container.innerHTML = html;
 
       fetchReviews(centerno);
+
+      document.getElementById("submitReview").addEventListener("click", () => {
+        submitReview(centerno);
+      });
     })
     .catch((e) => {
       console.error("에러 발생:", e);
@@ -96,7 +105,7 @@ const fetchReviews = (centerno) => {
 
       const reviewContainer = document.querySelector(".reviews");
 
-      if (filteredReviews.length === 0) {
+      if (filteredReviews.length == 0) {
         reviewContainer.innerHTML = "<p>리뷰가 아직 없습니다.</p>";
         return;
       }
@@ -113,7 +122,48 @@ const fetchReviews = (centerno) => {
     })
     .catch((e) => {
       console.error("에러 발생:", e);
-      alert("리뷰 데이터를 불러오는 데 실패했습니다.");
+    });
+};
+
+const submitReview = (centerno) => {
+  const reviewText = document.getElementById("reviewText").value;
+
+  if (!reviewText) {
+    alert("후기 내용을 입력하세요.");
+    return;
+  }
+
+  const reviewDto = {
+    centerno: centerno,
+    reviewText: reviewText,
+  };
+
+  const option = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(reviewDto),
+  };
+
+  fetch("/review/upload.do", option)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("후기 업로드에 실패했습니다.");
+      }
+      return response.json();
+    })
+    .then((result) => {
+      if (result) {
+        alert("후기가 성공적으로 업로드되었습니다.");
+        fetchReviews(centerno);
+      } else {
+        alert("후기 업로드에 실패했습니다.");
+      }
+    })
+    .catch((e) => {
+      console.error("에러 발생:", e);
+      alert("후기 업로드 중 에러가 발생했습니다.");
     });
 };
 

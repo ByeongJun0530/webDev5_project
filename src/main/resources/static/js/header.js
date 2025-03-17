@@ -44,7 +44,7 @@ function updateHeaderForLoggedIn(userData) {
         // 2. 로그아웃 링크 추가
         const logoutItem = document.createElement('li');
         logoutItem.className = 'nav-item';
-        logoutItem.innerHTML = '<a class="nav-link" href="#" onclick="logout()">로그아웃</a>';
+        logoutItem.innerHTML = '<a class="nav-link" href="#" onclick="handleLogout()">로그아웃</a>';
         authNav.appendChild(logoutItem);
     }
 }
@@ -54,17 +54,17 @@ function updateHeaderForLoggedIn(userData) {
  */
 function updateHeaderForLoggedOut() {
     const authNav = document.querySelector('.navbar-nav:not(.me-auto)');
-    
+
     if (authNav) {
         // 기존 링크 제거
         authNav.innerHTML = '';
-        
+
         // 회원가입 링크 추가
         const signupItem = document.createElement('li');
         signupItem.className = 'nav-item';
         signupItem.innerHTML = '<a class="nav-link" href="/member/signup">회원가입</a>';
         authNav.appendChild(signupItem);
-        
+
         // 로그인 링크 추가
         const loginItem = document.createElement('li');
         loginItem.className = 'nav-item';
@@ -76,7 +76,7 @@ function updateHeaderForLoggedOut() {
 /**
  * 로그아웃 처리 함수
  */
-function logout() {
+function handleLogout() {
     fetch('/member/logout')
         .then(response => response.json())
         .then(result => {

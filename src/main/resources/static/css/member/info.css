@@ -85,7 +85,38 @@ h1 {
     font-size: 16px;
 }
 
-/* 탭 스타일 제거하고 기본 정보 탭을 항상 표시하도록 수정 */
+/* Tabs Styles */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-btn:hover {
+    color: #4a90e2;
+}
+
+.tab-btn.active {
+    color: #4a90e2;
+    border-bottom-color: #4a90e2;
+}
+
+.tab-content {
+    display: none;
+}
+
 .tab-content.active {
     display: block;
 }
@@ -159,6 +190,21 @@ button {
     background-color: #c0392b;
 }
 
+/* Password matching messages */
+.match {
+    color: green;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.no-match {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
 /* Danger Zone Styles */
 .danger-zone {
     margin-top: 40px;
@@ -228,6 +274,15 @@ button {
     .profile-image {
         margin-right: 0;
         margin-bottom: 15px;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+        text-align: center;
     }
 
     .danger-zone button {

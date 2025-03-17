@@ -30,7 +30,13 @@
                 </div>
             </div>
 
-            <!-- 기본 정보 -->
+            <!-- 탭 메뉴 -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="profile">기본 정보</button>
+                <button class="tab-btn" data-tab="password">비밀번호 변경</button>
+            </div>
+
+            <!-- 기본 정보 탭 -->
             <div id="profile" class="tab-content active">
                 <form id="profileForm">
                     <!-- 사용자 이메일을 숨겨진 필드로 저장 (비밀번호 확인에 사용) -->
@@ -48,6 +54,31 @@
 
                     <div class="form-buttons">
                         <button type="submit" class="submit-btn">정보 수정</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 비밀번호 변경 탭 -->
+            <div id="password" class="tab-content">
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">현재 비밀번호</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">새 비밀번호</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">비밀번호 확인</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <span id="pwd-match-message"></span>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">비밀번호 변경</button>
                     </div>
                 </form>
             </div>
@@ -72,10 +103,6 @@
         </div>
     </div>
 </div>
-
-<script src="/js/member/info.js"></script>
-</body>
-</html>
 
 <script src="/js/member/info.js"></script>
 </body>

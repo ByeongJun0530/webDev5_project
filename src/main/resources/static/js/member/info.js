@@ -4,10 +4,25 @@ document.addEventListener('DOMContentLoaded', function() {
     // 사용자 정보 로드
     fetchUserInfo();
 
+    // 탭 전환 이벤트 등록
+    setupTabs();
+
     // 프로필 수정 폼 제출 이벤트 처리
     const profileForm = document.getElementById('profileForm');
     if (profileForm) {
         profileForm.addEventListener('submit', verifyPasswordBeforeUpdate);
+    }
+
+    // 비밀번호 변경 폼 제출 이벤트 처리
+    const passwordForm = document.getElementById('passwordForm');
+    if (passwordForm) {
+        passwordForm.addEventListener('submit', changePassword);
+
+        // 비밀번호 확인 일치 검사 이벤트 등록
+        const confirmPassword = document.getElementById('confirmPassword');
+        if (confirmPassword) {
+            confirmPassword.addEventListener('input', checkPasswordMatch);
+        }
     }
 
     // 로그아웃 버튼 이벤트 처리
@@ -32,6 +47,52 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmDeleteBtn.addEventListener('click', deleteAccount);
     }
 });
+
+/**
+ * 탭 전환 기능 설정
+ */
+function setupTabs() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 모든 탭 버튼에서 active 클래스 제거
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // 클릭한 버튼에 active 클래스 추가
+            this.classList.add('active');
+
+            // 모든 탭 컨텐츠 숨기기
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            // 선택한 탭 컨텐츠 표시
+            const tabId = this.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+}
+
+/**
+ * 비밀번호 일치 여부 확인 함수
+ */
+function checkPasswordMatch() {
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const pwdMatchMessage = document.getElementById('pwd-match-message');
+
+    if (newPassword && confirmPassword) {
+        if (newPassword === confirmPassword) {
+            pwdMatchMessage.textContent = '비밀번호가 일치합니다.';
+            pwdMatchMessage.className = 'match';
+        } else {
+            pwdMatchMessage.textContent = '비밀번호가 일치하지 않습니다.';
+            pwdMatchMessage.className = 'no-match';
+        }
+    } else {
+        pwdMatchMessage.textContent = '';
+    }
+}
 
 /**
  * 사용자 정보 가져오기
@@ -79,13 +140,14 @@ function displayUserInfo(userData) {
     // 폼 필드에 값 설정
     const mnameInput = document.getElementById('mname');
     const mphoneInput = document.getElementById('mphone');
+    const memailInput = document.getElementById('memail');
 
     if (mnameInput) mnameInput.value = userData.mname;
-    if (mphoneInput) mphoneInput.value = userData.mphone;
-
-    // 이메일 값을 숨겨진 필드에 저장 (비밀번호 확인에 사용)
-    const memailInput = document.getElementById('memail');
+    if (mphoneInput) mphoneInput.value = userData.mphone || '';
     if (memailInput) memailInput.value = userData.memail;
+
+    // 원래 사용자 정보를 숨겨진 필드에 저장 (나중에 참조용)
+    window.originalUserData = userData;
 }
 
 /**
@@ -94,6 +156,16 @@ function displayUserInfo(userData) {
  */
 function verifyPasswordBeforeUpdate(event) {
     event.preventDefault();
+
+    // 입력 필드에서 값 가져오기
+    const mname = document.getElementById('mname').value;
+    const mphone = document.getElementById('mphone').value;
+
+    // 입력 유효성 검사
+    if (!mname) {
+        showNotification('이름을 입력해주세요.', 'error');
+        return;
+    }
 
     // 비밀번호 확인 모달 내용 생성 및 표시
     const modalHtml = `
@@ -159,7 +231,7 @@ function verifyPassword(password) {
         if (result === true) {
             // 비밀번호 확인 성공, 모달 제거 후 업데이트 진행
             document.getElementById('passwordVerifyModal').remove();
-            updateUserInfo();
+            updateUserInfo(password); // 검증된 비밀번호 전달
         } else {
             // 비밀번호 확인 실패
             alert('비밀번호가 일치하지 않습니다.');
@@ -173,22 +245,23 @@ function verifyPassword(password) {
 
 /**
  * 사용자 정보 업데이트 처리
+ * @param {string} password - 확인된 사용자 비밀번호
  */
-function updateUserInfo() {
+function updateUserInfo(password) {
     // 입력 필드에서 값 가져오기
     const mname = document.getElementById('mname').value;
     const mphone = document.getElementById('mphone').value;
+    const memail = document.getElementById('memail').value;
 
-    // 입력 유효성 검사
-    if (!mname || !mphone) {
-        showNotification('모든 필드를 입력해주세요.', 'error');
-        return;
-    }
+    // 원래 사용자 정보 가져오기
+    const originalUserData = window.originalUserData || {};
 
-    // 업데이트 요청 객체 생성
+    // 업데이트 요청 객체 생성 - 모든 필드 포함
     const updateData = {
+        memail: memail,
         mname: mname,
-        mphone: mphone
+        mphone: mphone,
+        mpwd: password || originalUserData.mpwd // 확인된 비밀번호 또는 원래 비밀번호 사용
     };
 
     // fetch 요청 옵션 설정
@@ -221,6 +294,96 @@ function updateUserInfo() {
             console.error('정보 업데이트 오류:', error);
             showNotification('정보 업데이트 중 오류가 발생했습니다.', 'error');
         });
+}
+
+/**
+ * 비밀번호 변경 처리
+ * @param {Event} event - 폼 제출 이벤트
+ */
+function changePassword(event) {
+    event.preventDefault();
+
+    // 입력 필드에서 값 가져오기
+    const currentPassword = document.getElementById('currentPassword').value;
+    const newPassword = document.getElementById('newPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const memail = document.getElementById('memail').value;
+
+    // 입력 유효성 검사
+    if (!currentPassword || !newPassword || !confirmPassword) {
+        showNotification('모든 필드를 입력해주세요.', 'error');
+        return;
+    }
+
+    // 새 비밀번호 확인
+    if (newPassword !== confirmPassword) {
+        showNotification('새 비밀번호와 확인 비밀번호가 일치하지 않습니다.', 'error');
+        return;
+    }
+
+    // 현재 비밀번호 확인
+    const verifyData = {
+        memail: memail,
+        mpwd: currentPassword
+    };
+
+    // 로그인 API를 사용하여 현재 비밀번호 확인
+    fetch('/member/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(verifyData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result === true) {
+            // 현재 비밀번호 확인 성공, 비밀번호 변경 진행
+            // 원래 사용자 정보 가져오기
+            const userData = window.originalUserData || {};
+
+            // 비밀번호 변경 요청 데이터
+            const passwordData = {
+                memail: memail,
+                mname: userData.mname || document.getElementById('user-name').textContent,
+                mphone: userData.mphone || document.getElementById('mphone').value,
+                mpwd: newPassword
+            };
+
+            // 비밀번호 변경 요청
+            fetch('/member/update.do', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(passwordData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('서버 응답 오류: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(updateResult => {
+                if (updateResult === true) {
+                    // 비밀번호 변경 성공
+                    showNotification('비밀번호가 성공적으로 변경되었습니다.', 'success');
+                    // 폼 초기화
+                    document.getElementById('passwordForm').reset();
+                } else {
+                    // 비밀번호 변경 실패
+                    showNotification('비밀번호 변경에 실패했습니다.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('비밀번호 변경 오류:', error);
+                showNotification('비밀번호 변경 중 오류가 발생했습니다: ' + error.message, 'error');
+            });
+        } else {
+            // 현재 비밀번호 확인 실패
+            showNotification('현재 비밀번호가 일치하지 않습니다.', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('비밀번호 확인 오류:', error);
+        showNotification('비밀번호 확인 중 오류가 발생했습니다.', 'error');
+    });
 }
 
 /**

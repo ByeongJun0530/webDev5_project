@@ -48,4 +48,10 @@ public class MemberController {
         return memberService.myUpdate(memberDto);
     }
 
+    // 비밀번호 찾기 (임시 비밀번호 생성)
+    @PostMapping("/find-password.do")
+    public boolean findPassword(@RequestBody MemberDto memberDto) {
+        return memberService.resetPassword(memberDto.getMemail());
+    }
+
 }

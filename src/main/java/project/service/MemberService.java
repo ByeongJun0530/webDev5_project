@@ -3,7 +3,6 @@ package project.service;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +10,7 @@ import project.model.dto.MemberDto;
 import project.model.entity.MemberEntity;
 import project.model.repository.MemberRepository;
 
+import java.security.SecureRandom;
 import java.util.List;
 
 
@@ -255,8 +255,66 @@ public class MemberService{
             MemberEntity memberEntity = memberRepository.findByMemail(memail);
             memberEntity.setMname(memberDto.getMname());
             memberEntity.setMphone(memberDto.getMphone());
+            memberEntity.setMpwd(memberDto.getMpwd());
             return true;
         }
         return false;
+    }
+
+    /*
+     * 비밀번호 찾기 (임시 비밀번호 생성 및 이메일 전송)
+     * @param memail 사용자 이메일
+     * @return 비밀번호 재설정 성공 여부
+     */
+    @Transactional
+    public boolean resetPassword(String memail) {
+        System.out.println("===== 비밀번호 찾기 시도 =====");
+        System.out.println("이메일: " + memail);
+
+        // 회원 정보 확인
+        MemberEntity memberEntity = memberRepository.findByMemail(memail);
+        if (memberEntity == null) {
+            System.out.println("비밀번호 찾기 실패: 존재하지 않는 이메일");
+            return false;
+        }
+
+        // 임시 비밀번호 생성
+        String temporaryPassword = generateTemporaryPassword();
+        System.out.println("생성된 임시 비밀번호: " + temporaryPassword);
+
+        // 임시 비밀번호 저장
+        memberEntity.setMpwd(temporaryPassword);
+        memberRepository.save(memberEntity);
+
+        // 실제 서비스에서는 이메일 전송 로직이 필요합니다.
+        // 이 예제에서는 콘솔에 출력만 합니다.
+        System.out.println("임시 비밀번호 이메일 전송 (메일 서비스 연동 필요): " + memail);
+
+        System.out.println("비밀번호 찾기 성공");
+        System.out.println("===== 비밀번호 찾기 완료 =====");
+        return true;
+    }
+
+    /**
+     * 임시 비밀번호 생성
+     * @return 생성된 임시 비밀번호
+     */
+    private String generateTemporaryPassword() {
+        // 임시 비밀번호에 사용할 문자셋
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+        // 임시 비밀번호 길이
+        int length = 10;
+
+        // 보안 난수 생성기
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+
+        return sb.toString();
     }
 }

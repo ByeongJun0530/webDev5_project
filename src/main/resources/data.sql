@@ -1,3 +1,4 @@
+
 --센터 테이블
 INSERT INTO center
 (name,address,contact,email,service,website,hours,rating,capacity,staff,photo)
@@ -52,3 +53,78 @@ VALUES
 ("소금재가복지센터(22823700683)","인천광역시 부평구 백범로488번길 20 102호 (십정동)","032-277-1902","pwy0328@nate.com","재가노인복지시설 방문목욕, 재가노인복지시설 방문요양","http://인천방문요양.org","09시~18시 , 법정공휴일 휴무",4,"0",29,"48.소금재가복지센터(22823700683)"),
 ("신이랑재가복지센터(22823700713)","인천광역시 부평구 부평대로 24 802호 (부평동)","032-271-2700","sin2rang@naver.com","재가노인복지시설 방문요양","x","월~금 09:00~18:00, 법정공휴일 휴무",4,"0",25,"49.신이랑재가복지센터(22823700713)"),
 ("리움재가복지센터(22823700670)","인천광역시 부평구 경원대로1256번길 18 1층 (부평동)","032-503-2201","posaffirm10@naver.com","재가노인복지시설 방문목욕, 재가노인복지시설 방문요양","http://www.liumcare.com","x",4,"0",44,"50.리움재가복지센터(22823700670)");
+
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('매우 친절하고 시설이 깨끗합니다.', 4.5, 1, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('서비스가 좋고 편리합니다.', 4.2, 1, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설이 조금 낡았지만 좋습니다.', 3.8, 2, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('직원들이 친절하고 기분 좋습니다.', 5.0, 2, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('깨끗하고 깔끔한 시설입니다.', 4.4, 3, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('조용하고 편안한 환경입니다.', 4.1, 3, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('대체로 만족스러운 경험이었습니다.', 3.9, 4, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('직원이 매우 친절하고 시설도 좋습니다.', 4.8, 4, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('충분히 만족스러웠습니다.', 4.0, 5, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('가격대비 아주 훌륭합니다.', 4.3, 5, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('만족스럽고 편리했습니다.', 4.2, 6, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('좋은 경험이었습니다.', 3.7, 6, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설이 잘 관리되고 있습니다.', 4.6, 7, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('정말 편안한 시간을 보냈습니다.', 4.9, 7, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('다음에 또 이용하고 싶습니다.', 4.5, 8, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('위치가 좋고 청결합니다.', 4.1, 8, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('접근성이 뛰어나 좋습니다.', 4.2, 9, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설이 새것 같고 좋았습니다.', 4.7, 9, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('정말 감동적인 서비스입니다.', 5.0, 10, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('청결 상태가 매우 좋습니다.', 4.6, 10, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('리셉션에서 친절하게 맞아줬습니다.', 4.8, 11, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('정말 기분 좋은 경험이었습니다.', 5.0, 11, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('다소 오래된 시설이지만 관리가 잘 되었습니다.', 3.9, 12, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('편안하고 즐거운 시간을 보냈습니다.', 4.4, 12, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설이 매우 편리하고 깔끔합니다.', 4.6, 13, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('주차 공간이 넉넉해서 편리했습니다.', 4.2, 13, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('다소 시끄러웠지만 대체로 만족합니다.', 3.8, 14, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('스태프들이 친절하고 응대가 좋았습니다.', 4.9, 14, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설이 쾌적하고 좋았습니다.', 4.4, 15, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('위치가 좋아 방문이 편리했습니다.', 4.3, 15, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('깨끗하고 청소 상태가 좋았습니다.', 4.5, 16, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설 관리가 훌륭했습니다.', 4.7, 16, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('서비스가 정말 훌륭했습니다.', 4.9, 17, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('재방문 의사가 있습니다.', 4.8, 17, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('청결하고 직원이 친절했습니다.', 4.4, 18, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설 내부가 조용하고 안정적입니다.', 4.3, 18, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('전반적으로 만족스러운 방문이었습니다.', 4.1, 19, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('내부 시설이 잘 관리되고 있습니다.', 4.6, 19, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('편안한 분위기가 매우 좋았습니다.', 4.8, 20, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('주변 환경도 훌륭했습니다.', 4.7, 20, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('청결 상태와 직원 친절도가 매우 좋습니다.', 4.9, 21, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설 유지 관리 상태가 좋았습니다.', 4.2, 21, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('다음에도 꼭 방문하고 싶습니다.', 5.0, 22, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('조용한 환경이 너무 좋았습니다.', 4.5, 22, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('전체적으로 만족스러웠습니다.', 4.3, 23, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('좋은 경험을 했습니다.', 4.1, 23, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('서비스와 시설 모두 훌륭합니다.', 4.8, 24, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('내부 시설이 매우 깔끔합니다.', 4.6, 24, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('언제든 다시 이용하고 싶습니다.', 4.9, 25, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('서비스가 빠르고 만족스러웠습니다.', 4.7, 25, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설이 매우 깨끗하고 좋습니다.', 4.5, 26, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('직원들이 아주 친절했습니다.', 4.8, 26, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('위치가 좋아 방문이 쉬웠습니다.', 4.6, 27, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('조용하고 쾌적한 환경이었습니다.', 4.4, 27, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('깨끗하고 관리가 잘 되어 있었습니다.', 4.9, 28, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('적당한 가격에 훌륭한 서비스였습니다.', 4.3, 28, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('직원들의 응대가 매우 만족스러웠습니다.', 4.7, 29, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설 상태가 좋아서 편리했습니다.', 4.2, 29, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('청결 상태와 분위기가 매우 좋습니다.', 4.8, 30, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('편안하고 친근한 분위기였습니다.', 4.6, 30, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('교통 접근성이 뛰어나 좋았습니다.', 4.2, 31, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('내부 시설이 최신식이었습니다.', 4.5, 31, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('적당한 가격에 훌륭한 선택이었습니다.', 4.7, 32, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('다소 혼잡했지만 전체적으로 만족합니다.', 3.8, 32, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('친절하고 세심한 서비스였습니다.', 5.0, 33, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설이 매우 쾌적하고 정리가 잘 되어 있었습니다.', 4.9, 33, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('단순히 기대 이상이었습니다.', 4.8, 34, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('위치와 시설이 모두 만족스러웠습니다.', 4.6, 34, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('편리하고 쾌적한 환경이었습니다.', 4.4, 35, 4);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('가족과 함께 방문하기 좋습니다.', 4.7, 35, 5);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('청소 상태가 훌륭했습니다.', 4.9, 36, 1);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('정말 추천하고 싶은 장소였습니다.', 4.8, 36, 2);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('서비스 수준이 매우 높았습니다.', 5.0, 37, 3);
+INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설 관리를 정말 잘하고 있습니다.', 4.5, 37, 4);

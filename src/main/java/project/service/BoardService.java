@@ -24,12 +24,12 @@ public class BoardService {
         return boardMapper.boardFindAll();
     }
      */
-    public Map<String, Object> pagedBoards(int page, int pageSize){
-        int totalBoards = boardMapper.countBoards();
+    public Map<String, Object> pagedBoards(int page, int pageSize, String keyword, Integer cno){
+        int totalBoards = boardMapper.countBoards(keyword, cno);
         int totalPages = (int)Math.ceil((double) totalBoards / pageSize);
         int offset = (page - 1) * pageSize;
 
-        List<BoardDto> boards = boardMapper.boardFindAll(pageSize, offset);
+        List<BoardDto> boards = boardMapper.boardFindAll(pageSize, offset, keyword, cno);
 
         // 게시글에 해당하는 댓글 추가
         for(BoardDto board : boards){

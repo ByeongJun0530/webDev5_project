@@ -1,0 +1,27 @@
+#hr{
+color: yellowgreen;
+height : 50px;
+}
+
+#center_name{
+    text-align: center;
+}
+
+#infomain{
+    background-color: #fefae0;
+}
+
+#info{
+    border: 1px solid black;
+}
+
+
+#info div{
+    border: 1px solid black;
+}
+
+
+/* 상세페이지 버튼 */
+#info10{
+    align-items: center;
+}

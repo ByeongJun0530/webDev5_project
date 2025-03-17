@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판</title>
+</head>
+<body>
+    <!-- 헤더 -->
+    <div th:replace="~{ /html/main/header.html :: header }"></div>
+    <div class="container">
+        <!-- 글쓰기 창 진입 버튼-->
+        <button type="button" class="btn btn-primary" onclick="location.href='/board/write'">글쓰기</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>게시글 번호</th>
+                    <th>카테고리</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 게시글 출력 구역 -->
+            </tbody>
+        </table>
+
+        <!-- 페이징 버튼 -->
+        <!-- <nav aria-label="Page navigation example">
+            <ul class="pagination pagebox">
+
+            </ul>
+        </nav> -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination pagebox">
+
+            </ul>
+        </nav>
+        <!-- 검색 이용한 게시글 개별 조회 -->
+        <div class="row">
+            <div class="col-auto">
+                <select class="form-select key">
+                    <option value="btitle">제목</option>
+                    <option value="bcontent">내용</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <input class="form-control keyword" type="text">
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-primary" onclick="boardSearch()">검색</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="/js/board/board.js"></script>
+</body>
+</html>

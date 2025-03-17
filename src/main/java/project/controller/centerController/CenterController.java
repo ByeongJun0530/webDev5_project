@@ -15,20 +15,21 @@ public class CenterController {
     private CenterService centerService;
 
     // 센터 등록
-//    @PostMapping("/upload.do")
-//    public boolean upload(@RequestParam("file") MultipartFile file, @ModelAttribute CenterDto centerDto) {
-//        return centerService.upload(centerDto, file);
-//    }
     @PostMapping("/upload.do")
-    public boolean upload(@ModelAttribute CenterDto centerDto) {
+    public boolean upload( @ModelAttribute CenterDto centerDto) {
         return centerService.upload(centerDto);
     }
+//    @PostMapping("/upload.do")
+//    public boolean upload(@ModelAttribute CenterDto centerDto) {
+//        return centerService.upload(centerDto);
+//    }
 
     // 센터 전체 조회
     @GetMapping("/findall.do")
     public List<CenterDto> findAll() {
         return centerService.findAll();
     }
+
 
     // 개별 센터 조회
     @GetMapping("/find.do")

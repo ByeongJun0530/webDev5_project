@@ -12,9 +12,10 @@ public interface BoardMapper {
     // 게시물 등록
     boolean boardWrite(BoardDto boardDto);
     // 게시물 전체 조회
-    List<BoardDto> boardFindAll(@Param("limit") int limit, @Param("offset") int offset);
+    List<BoardDto> boardFindAll(@Param("limit") int limit, @Param("offset") int offset,
+                                @Param("keyword") String keyword, @Param("cno") Integer cno);
     // 전체 게시물 개수 조회
-    int countBoards();
+    int countBoards(String keyword, Integer cno);
     // 게시물 개별 조회
     BoardDto boardFind(int bno);
     // 게시물 수정

@@ -18,28 +18,28 @@ public class CenterService {
     private CenterRepository centerRepository;
 
     // 센터 등록
-//    public boolean upload(CenterDto centerDto, MultipartFile file) {
-//        if (!file.isEmpty()) {
-//            try {
-//                // 파일 저장 로직
-//                String fileName = file.getOriginalFilename();
-//                String filePath = "path/to/save/" + fileName;
-//                file.transferTo(new File(filePath));
-//                centerDto.setPhoto(filePath); // 파일 경로를 DTO에 설정
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                return false;
-//            }
-//        }
-//        CenterEntity centerEntity = centerDto.toEntity();
-//        centerRepository.save(centerEntity);
-//        return true;
-//    }
     public boolean upload(CenterDto centerDto) {
+        if (!centerDto.getUploadFile().isEmpty()) {
+            try {
+                // 파일 저장 로직
+                String fileName = centerDto.getUploadFile().getOriginalFilename();
+                String filePath = "C:\\Users\\admin\\Documents\\java\\webDev5_project\\build\\resources\\main\\static\\img\\" + fileName;
+                centerDto.getUploadFile().transferTo(new File(filePath));
+                centerDto.setPhoto(filePath); // 파일 경로를 DTO에 설정
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
         CenterEntity centerEntity = centerDto.toEntity();
         centerRepository.save(centerEntity);
         return true;
     }
+//    public boolean upload(CenterDto centerDto) {
+//        CenterEntity centerEntity = centerDto.toEntity();
+//        centerRepository.save(centerEntity);
+//        return true;
+//    }
 
     // 센터 전체 조회
     public List<CenterDto> findAll() {

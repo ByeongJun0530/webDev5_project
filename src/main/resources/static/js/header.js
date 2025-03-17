@@ -1,8 +1,28 @@
 // header.js
 document.addEventListener('DOMContentLoaded', function() {
+    // 기존 HTML의 로그인/회원가입 링크를 모두 제거
+    cleanupExistingAuthLinks();
+
     // 로그인 상태 확인 및 헤더 메뉴 업데이트
     checkLoginStatus();
 });
+
+/**
+ * 기존 HTML에 있는 로그인/회원가입 링크를 모두 제거
+ */
+function cleanupExistingAuthLinks() {
+    // 기존 로그인/회원가입 링크 요소들 제거
+    const existingAuthLinks = document.querySelectorAll(
+        '.navbar-collapse .nav-item a[href="/member/login"], .navbar-collapse .nav-item a[href="/member/signup"]'
+    );
+
+    existingAuthLinks.forEach(link => {
+        const parentLi = link.closest('li.nav-item');
+        if (parentLi) {
+            parentLi.remove();
+        }
+    });
+}
 
 /**
  * 로그인 상태를 확인하고 헤더 메뉴를 업데이트하는 함수
@@ -31,9 +51,16 @@ function checkLoginStatus() {
 function updateHeaderForLoggedIn(userData) {
     const authNav = document.querySelector('.member');
 
-    if (authNav) {
-        // 기존 링크 제거
-        authNav.innerHTML = '';
+    if (navbarCollapse) {
+        // 기존의 인증 관련 메뉴 제거
+        const existingAuthNav = navbarCollapse.querySelector('.auth-nav');
+        if (existingAuthNav) {
+            existingAuthNav.remove();
+        }
+
+        // 새로운 인증 메뉴 ul 생성
+        const authNav = document.createElement('ul');
+        authNav.className = 'navbar-nav ms-auto auth-nav';
 
         // 1. 사용자 이름을 클릭 가능한 링크로 추가 (마이페이지로 이동)
         const userNameItem = document.createElement('li');
@@ -46,6 +73,9 @@ function updateHeaderForLoggedIn(userData) {
         logoutItem.className = 'nav-item';
         logoutItem.innerHTML = '<a class="nav-link" href="#" onclick="handleLogout()">로그아웃</a>';
         authNav.appendChild(logoutItem);
+
+        // 메뉴 오른쪽에 추가
+        navbarCollapse.appendChild(authNav);
     }
 }
 
@@ -55,9 +85,16 @@ function updateHeaderForLoggedIn(userData) {
 function updateHeaderForLoggedOut() {
     const authNav = document.querySelector('.member');
 
-    if (authNav) {
-        // 기존 링크 제거
-        authNav.innerHTML = '';
+    if (navbarCollapse) {
+        // 기존의 인증 관련 메뉴 제거
+        const existingAuthNav = navbarCollapse.querySelector('.auth-nav');
+        if (existingAuthNav) {
+            existingAuthNav.remove();
+        }
+
+        // 새로운 인증 메뉴 ul 생성
+        const authNav = document.createElement('ul');
+        authNav.className = 'navbar-nav ms-auto auth-nav';
 
         // 회원가입 링크 추가
         const signupItem = document.createElement('li');
@@ -70,6 +107,9 @@ function updateHeaderForLoggedOut() {
         loginItem.className = 'nav-item';
         loginItem.innerHTML = '<a class="nav-link" href="/member/login">로그인</a>';
         authNav.appendChild(loginItem);
+
+        // 메뉴 오른쪽에 추가
+        navbarCollapse.appendChild(authNav);
     }
 }
 

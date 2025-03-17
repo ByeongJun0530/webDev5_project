@@ -3,7 +3,9 @@ package project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.model.dto.BoardDto;
+import project.model.dto.MemberDto;
 import project.model.dto.ReplyDto;
+import project.model.entity.MemberEntity;
 import project.model.mapper.BoardMapper;
 import project.model.repository.MemberRepository;
 
@@ -17,15 +19,25 @@ public class BoardService {
     @Autowired private MemberService memberService;
     @Autowired private MemberRepository memberRepository;
     // 게시물 등록
-    public boolean boardWrite(BoardDto boardDto){
-        if (memberService.getSession() != null){
-            String memail = memberRepository.findByMemail(memberService.getSession()).getMemail();
-            boardDto.setMemail(memail);
-        }else {
+    public boolean boardWrite(BoardDto boardDto) {
+        if (memberService.getSession() != null) {
+            MemberEntity member = memberRepository.findByMemail(memberService.getSession());
+
+            if (member != null) {
+                boardDto.setMemail(member.getMemail()); // 이메일 설정
+                boardDto.setMno(member.getMno());       // 회원 번호 설정 (중요!)
+            } else {
+                System.out.println("회원 정보를 찾을 수 없습니다.");
+                return false;
+            }
+        } else {
             System.out.println("로그인 정보가 없습니다.");
+            return false;
         }
+
         return boardMapper.boardWrite(boardDto);
     }
+
     // 게시물 전체 조회
     /*
     public List<BoardDto> boardFindAll(){

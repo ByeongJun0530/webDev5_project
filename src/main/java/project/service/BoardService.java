@@ -3,7 +3,6 @@ package project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.model.dto.BoardDto;
-import project.model.dto.MemberDto;
 import project.model.dto.ReplyDto;
 import project.model.entity.MemberEntity;
 import project.model.mapper.BoardMapper;
@@ -90,6 +89,9 @@ public class BoardService {
         if (memberService.getSession() != null){
             String memail = memberRepository.findByMemail(memberService.getSession()).getMemail();
             replyDto.setMemail(memail);
+        }else {
+            System.out.println("로그인 시 이용 가능합니다.");
+            return false;
         }
         return boardMapper.replyWrite(replyDto);
     }

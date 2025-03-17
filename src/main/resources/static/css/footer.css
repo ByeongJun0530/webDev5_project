@@ -1,0 +1,45 @@
+footer {
+  background-color: #333;
+  color: white;
+  padding: 5px 0; /* 높이를 절반으로 줄임 */
+  width: 100%; /* 가로를 100%로 확장 */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* 아래 여백을 줄여 높이를 더 줄일 수 있음 */
+  padding-top: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+
+.footer-logo img {
+  max-width: 150px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 4px; /* 리스트 아이템 간격 줄임 */
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-social a {
+  margin-right: 10px; /* 소셜 링크 간격 줄임 */
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+.footer-social a:hover {
+  color: grey;
+}

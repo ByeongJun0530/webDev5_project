@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/api.css" />
+     <link rel='stylesheet' href='/css/api.css'>
   </head>
   <body>
     <div class="container">
@@ -22,37 +22,24 @@
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=709454abbec211096eb07f4cf2d347db&libraries=services,clusterer"
     ></script>
 
-    <button
-      style="display: none"
-      class="btn btn-primary 사이드바버튼"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasScrolling"
-      aria-controls="offcanvasExample"
-    >
+
+    <button style="display: none;" class="btn btn-primary 사이드바버튼" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasExample">
       안보이는데
     </button>
 
-    <!--오프캔버스 한뭉텅이-->
-    <div
-      class="offcanvas offcanvas-start"
-      data-bs-scroll="true"
-      tabindex="-1"
-      id="offcanvasScrolling"
-      aria-labelledby="offcanvasScrollingLabel"
-    >
+<!--오프캔버스 한뭉텅이-->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
       <div class="offcanvas-header" id="infomain">
-        <h3 class="offcanvas-title" id="offcanvasScrollingLabel">
-          <span id="center_name"></span>
-        </h3>
-        <hr id="hr" />
+        <h3 class="offcanvas-title" id="offcanvasScrollingLabel"><span id="center_name"></span></h3>
+        <hr id="hr"/>
       </div>
+
 
       <!--  오프캠퍼스 바디    -->
       <div class="offcanvas-body" id="infomain">
         <div id="info">
           <!-- 기관설명들이 오는곳 기관설명들이 오는곳1(사진) -->
-          <div id="info1"><img id="img" src="" /></div>
+          <div id="info1"><img id="img" src=""></div>
           <!-- 기관설명들이 오는곳 기관설명들이 오는곳2 -->
           <div id="info2"></div>
           <!-- 기관설명들이 오는곳 기관설명들이 오는곳3 -->
@@ -71,13 +58,14 @@
           <div id="info9"></div>
           <!--    상세페이지       -->
           <div id="info10">
-            <button type="button" class="btn btn-outline-success">
-              <a id="detail" href="/">상세페이지 이동</a>
-            </button>
+            <button type="button" class="btn btn-outline-success">상세페이지 이동</button>
           </div>
+
+      
         </div>
       </div>
     </div>
+
 
     <script src="/js/api.js"></script>
   </body>

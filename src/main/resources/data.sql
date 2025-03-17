@@ -1,4 +1,3 @@
-
 --센터 테이블
 INSERT INTO center
 (name,address,contact,email,service,website,hours,rating,capacity,staff,photo)
@@ -128,3 +127,34 @@ INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('청소 상태�
 INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('정말 추천하고 싶은 장소였습니다.', 4.8, 36, 2);
 INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('서비스 수준이 매우 높았습니다.', 5.0, 37, 3);
 INSERT INTO review (review_Text, rating, centerno, mno) VALUES ('시설 관리를 정말 잘하고 있습니다.', 4.5, 37, 4);
+
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 이용안내', '저희 요양원에서는 다양한 서비스를 제공하고 있습니다. 입소에 대한 문의는 언제든지 연락 주세요.', 1, 'chulsoo@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('Q&A - 요양원 등록 절차', '요양원 등록 절차에 대해 문의드립니다. 등록을 위해 필요한 서류가 무엇인지 알고 싶습니다.', 2, 'younghee@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 시설 소개', '저희 요양원 시설은 최신 설비와 편안한 환경을 자랑합니다. 방문하여 확인해 보세요.', 3, 'minsu@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 서비스 리뷰', '이곳에서 6개월 동안 생활하면서 매우 만족하고 있습니다. 직원들의 서비스가 뛰어나요.', 4, 'jieun@example.com', 3, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('기타 문의사항', '요양원 입소 시 추가 비용이 발생하는지 궁금합니다. 알려주세요.', 5, 'gildong@example.com', 4, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 방문 예약 방법', '요양원 방문 예약은 어떻게 하나요? 온라인 예약 시스템이 있으면 좋겠습니다.', 6, 'hana@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('Q&A - 방문시간 안내', '저희 요양원은 방문 시간이 정해져 있나요? 방문 가능 시간대가 궁금합니다.', 7, 'juno@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('리뷰 - 요양원 식사', '요양원의 식사는 다양하고 건강한 식단으로 제공됩니다. 식사에 대한 후기가 궁금합니다.', 8, 'sujin@example.com', 3, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('기타 - 요양원 내부 정비', '요양원 내부 시설에 대한 정비가 필요해 보입니다. 특히 화장실 부분이 불편합니다.', 9, 'soyeon@example.com', 4, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 입소 후기', '요양원 입소 후 생활이 매우 편안하고 친절한 서비스 덕분에 큰 만족을 느끼고 있습니다.', 10, 'minhyuk@example.com', 3, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 입소 절차', '요양원 입소 신청 시 필요한 서류와 절차에 대해 자세히 알고 싶습니다.', 1, 'chulsoo@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('Q&A - 요양원 규정', '요양원 규정에 대해 더 알고 싶습니다. 특히 입소 후 규정은 어떻게 되나요?', 2, 'younghee@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 주변 환경', '저희 요양원은 조용한 환경에 위치해 있어 편안한 생활이 가능합니다. 주변 환경을 알고 싶으시면 방문해 주세요.', 3, 'minsu@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 프로그램 안내', '요양원에서는 다양한 프로그램을 제공하여 입소자들의 삶의 질을 높이고 있습니다. 프로그램에 대한 정보가 필요합니다.', 4, 'jieun@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('리뷰 - 요양원 직원 서비스', '요양원 직원분들의 서비스가 너무 좋아요. 항상 친절하고 배려 깊은 서비스를 제공해 주셔서 감사드립니다.', 5, 'gildong@example.com', 3, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('기타 - 요양원 비용 안내', '요양원의 비용이 궁금합니다. 입소 시 비용은 어떻게 되는지 알려주세요.', 6, 'hana@example.com', 4, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 커뮤니티', '저희 요양원에서는 활발한 커뮤니티 활동이 이루어지고 있습니다. 커뮤니티 프로그램에 대해 알고 싶습니다.', 7, 'juno@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('Q&A - 요양원 식사', '요양원에서 제공하는 식사의 종류와 퀄리티에 대해 문의드립니다.', 8, 'sujin@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 교통편 안내', '요양원에 방문하기 위한 교통편 안내가 필요합니다. 대중교통을 이용하는 방법을 알고 싶습니다.', 9, 'soyeon@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('리뷰 - 요양원 환경', '이곳은 주변 환경이 조용하고 깨끗하여 매우 좋습니다. 입소 전 꼭 방문해 보세요.', 10, 'minhyuk@example.com', 3, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('기타 - 요양원 방문 예약', '저희 요양원에 방문 예약을 어떻게 할 수 있는지 알고 싶습니다.', 1, 'chulsoo@example.com', 4, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 생활 후기', '요양원에서 생활하면서 느낀 점과 개선이 필요하다고 생각되는 점들을 나누고 싶습니다.', 2, 'younghee@example.com', 3, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('Q&A - 요양원 건강 관리', '요양원에서 제공하는 건강 관리 프로그램에 대해 알고 싶습니다. 특히 체계적인 관리가 이루어지는지 궁금합니다.', 3, 'minsu@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 입소 신청서', '요양원 입소 신청서를 작성하고 제출하려고 합니다. 필요한 서류를 안내해 주세요.', 4, 'jieun@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('기타 - 요양원 시설 안내', '저희 요양원의 시설은 편안하고 안전하게 설계되어 있습니다. 시설에 대한 상세 정보를 제공해 주세요.', 5, 'gildong@example.com', 4, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('리뷰 - 요양원 활동 프로그램', '요양원에서 제공하는 다양한 활동 프로그램이 유익하고 재미있습니다. 프로그램에 대해 더 알고 싶습니다.', 6, 'hana@example.com', 3, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 규정 안내', '요양원 규정에 대해 더 알고 싶습니다. 특히 입소 규정이 궁금합니다.', 7, 'juno@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('Q&A - 요양원 관리 프로그램', '요양원에서 제공하는 관리 프로그램에 대해 자세히 알고 싶습니다. 어떤 프로그램이 있는지 설명해 주세요.', 8, 'sujin@example.com', 2, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('요양원 식사 시간', '요양원의 식사 시간과 메뉴에 대해 궁금합니다. 매일 어떤 음식이 제공되나요?', 9, 'soyeon@example.com', 1, NOW(), NOW()),
+INSERT INTO boards (btitle, bcontent, mno, memail, cno, cdate, mdate) VALUES('기타 - 요양원 예약 취소', '요양원 예약을 취소하려고 하는데, 취소 절차에 대해 알려주세요.', 10, 'minhyuk@example.com', 4, NOW(), NOW());

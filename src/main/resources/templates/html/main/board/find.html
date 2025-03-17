@@ -12,7 +12,10 @@
     <div class="info" style="border-bottom: 1px solid #000;">
       <span class="memail"></span>
       <span class="cname"></span>
-      <span class="cdate"></span>
+      <span>
+        <span class="cdate"></span>
+        <button type="button" class="btn btn-primary" onclick="boardDelete()" style="background-color:red;">삭제</button>
+      </span>
     </div>
     <!-- 게시글 상세 -->
     <div style="border-bottom: 1px solid #000;">
@@ -23,7 +26,7 @@
     <!-- 댓글 작성 구역-->
     <div style="margin-top : 10px; ">
       <textarea class="rcontent" style="width:100%"></textarea>
-      <button type="button" onclick="replyWrite()" style="text-align:right">작성</button>
+      <button type="button" class="btn btn-primary" onclick="replyWrite()" style="text-align:right">작성</button>
     </div>
     <!-- 댓글 출력 구역 -->
     <div class="replies mt-5">

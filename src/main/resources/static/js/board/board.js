@@ -4,26 +4,13 @@ console.log("board.js opened")
 // 게시물 조회 요청
 // fetch URL 수정: keyword와 cno가 비어 있으면 URL에서 생략
 const boardFindAll = () => {
-    let page = new URL(location.href).searchParams.get('page');
-    let pageSize = new URL(location.href).searchParams.get('pageSize');
-    let keyword = new URL(location.href).searchParams.get('keyword');
-    let cno = new URL(location.href).searchParams.get('cno');
+    // 현재 페이지의 쿼리 파라미터 추출
+    let page = new URL(location.href).searchParams.get('page') || 1; // 기본 페이지 1
+    let pageSize = new URL(location.href).searchParams.get('pageSize') || 10; // 기본 페이지 사이즈 10
+    let keyword = new URL(location.href).searchParams.get('keyword') || ""; // 기본값은 null
+    let cno = new URL(location.href).searchParams.get('cno') || ""; // 기본값은 null
 
-    // null이거나 공백일 경우 파라미터에서 제외
-    keyword = (keyword && keyword.trim() !== "") ? keyword : undefined;
-    cno = (cno && cno.trim() !== "") ? cno : undefined;
-
-    page = page ? page : 1;
-    pageSize = pageSize ? pageSize : 10;
-
-    let url = `/board/findall.do?page=${page}&pageSize=${pageSize}`;
-
-    if (keyword && keyword.trim() !== "") {
-        url += `&keyword=${encodeURIComponent(keyword)}`;
-    }
-    if (cno && cno.trim() !== "") {
-        url += `&cno=${cno}`;
-    }
+    let url = `/board/findall.do?page=${page}&pageSize=${pageSize}&keyword=${keyword}&cno=${cno}`;
 
     fetch(url, { method: 'GET' })
         .then(r => r.json())
@@ -56,6 +43,7 @@ const boardFindAll = () => {
         })
         .catch(e => console.error("데이터 로딩 실패:", e));
 };
+boardFindAll();
 
 const pagination = (page, pageSize, totalPages, keyword, cno) => {
     page = parseInt(page);
@@ -65,15 +53,10 @@ const pagination = (page, pageSize, totalPages, keyword, cno) => {
     let endBtn = Math.min(page + 2, totalPages);
 
     const pagebox = document.querySelector('.pagebox');
-    if (!pagebox) {
-        console.error("여기가 오류");
-        return;
-    }
-
     let html = ``;
 
     // 이전 버튼
-    html += `<li class="page-item ${page == 1 ? 'disabled' : ''}">
+    html += `<li class="page-item ${page === 1 ? 'disabled' : ''}">
                 <a class="page-link" href="/board?page=${Math.max(1, page - 1)}&pageSize=${pageSize}&keyword=${keyword}&cno=${cno}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
@@ -82,7 +65,7 @@ const pagination = (page, pageSize, totalPages, keyword, cno) => {
     // 페이징 버튼 (startBtn ~ endBtn 범위)
     for (let i = startBtn; i <= endBtn; i++) {
         html += `
-            <li class="page-item ${page == i ? 'active' : ''}">
+            <li class="page-item ${page === i ? 'active' : ''}">
                 <a class="page-link" href="/board?page=${i}&pageSize=${pageSize}&keyword=${keyword}&cno=${cno}">
                    ${i}
                 </a>
@@ -90,7 +73,7 @@ const pagination = (page, pageSize, totalPages, keyword, cno) => {
     }
 
     // 다음 버튼
-    html += `<li class="page-item ${page == totalPages ? 'disabled' : ''}">
+    html += `<li class="page-item ${page === totalPages ? 'disabled' : ''}">
                 <a class="page-link" href="/board?page=${Math.min(totalPages, page + 1)}&pageSize=${pageSize}&keyword=${keyword}&cno=${cno}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
@@ -98,9 +81,8 @@ const pagination = (page, pageSize, totalPages, keyword, cno) => {
 
     pagebox.innerHTML = html;
 };
-
 // 실행
-boardFindAll();
+
 
 // [3] 게시글 검색 함수
 const boardSearch = () => {

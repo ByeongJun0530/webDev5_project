@@ -77,6 +77,11 @@ public class BoardService {
     }
     // 게시물 삭제
     public boolean boardDelete(int bno){
+        if (boardMapper.boardFind(bno).getMemail() == memberService.getSession()){
+            System.out.println("삭제 성공");
+        }else {
+            System.out.println("삭제 실패 : 본인의 게시물만 삭제 가능합니다.");
+        }
         return boardMapper.boardDelete(bno);
     }
 

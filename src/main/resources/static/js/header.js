@@ -49,8 +49,7 @@ function checkLoginStatus() {
  * @param {Object} userData - 사용자 정보
  */
 function updateHeaderForLoggedIn(userData) {
-    // navbar-collapse 요소 선택
-    const navbarCollapse = document.getElementById('navbarNavDropdown');
+    const authNav = document.querySelector('.member');
 
     if (navbarCollapse) {
         // 기존의 인증 관련 메뉴 제거
@@ -84,8 +83,7 @@ function updateHeaderForLoggedIn(userData) {
  * 로그아웃 상태일 때 헤더 메뉴 업데이트
  */
 function updateHeaderForLoggedOut() {
-    // navbar-collapse 요소 선택
-    const navbarCollapse = document.getElementById('navbarNavDropdown'); // 이거 없는거 같습니다
+    const authNav = document.querySelector('.member');
 
     if (navbarCollapse) {
         // 기존의 인증 관련 메뉴 제거

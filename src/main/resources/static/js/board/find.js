@@ -13,6 +13,7 @@ const boardFind = () => {
             document.querySelector('.memail').innerHTML = d.memail;
             document.querySelector('.cname').innerHTML = d.cname;
             document.querySelector('.cdate').innerHTML = d.cdate;
+
             // 본문
             document.querySelector('.btitle').innerHTML = d.btitle;
             document.querySelector('.bcontent').innerHTML = d.bcontent;
@@ -20,6 +21,28 @@ const boardFind = () => {
         .catch(e => {console.log(e)});
 }
 boardFind();
+
+// 게시글 삭제 함수
+const boardDelete = () => {
+    const bno = new URL(location.href).searchParams.get('bno');
+    // fetch option
+    const option = {
+        method : 'Delete'
+    }
+    // fetch
+    fetch(`/board/delete.do?bno=${bno}`, option)
+        .then(r => r.json())
+        .then(d => {
+            if(d == true){
+                alert('게시물 삭제 성공');
+                location.href = '/board';
+            }else{
+                alert('게시물 삭제 실패');
+                location.href = '/board'
+            }
+        })
+        .catch(e => {console.log(e)})
+}
 
 // 댓글 작성 함수
 const replyWrite = () => {

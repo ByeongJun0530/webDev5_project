@@ -23,6 +23,7 @@
       // 데이터 넣을 배열 선언
       const data = [];
 
+
       //함수 선언언
       const findall = () =>{
 
@@ -31,8 +32,6 @@
             headers: {},
           };
 
-
-      
 
     //fetch
     fetch("/center/findall.do",option)
@@ -59,34 +58,41 @@
                             position: coords
                         });
 
-                        // 인포윈도우로 장소에 대한 설명을 표시합니다 + 내용 누르면 오프캔버스 열림
+                        // 인포윈도우로 장소에 대한 설명을 표시합니다
+                            //이름에서 뒤에 복지 번호 삭제 - data.name.split('(')[0].trim();
                         var infowindow = new kakao.maps.InfoWindow({
-                            content: `<div data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" style="background-color: #F0F0F0; width:150px;text-align:center;padding:6px 0;">${data.name}</div>`
-                        });
+                        content: `<div
+                        style="background-color: #fefae0; width:150px;text-align:center;padding:6px 0;">${data.name.split('(')[0].trim()}</div>`
+                          });
 
-                        //마커에 클릭 이벤트 등록록
-                        kakao.maps.event.addListener( marker , 'click' , () => {
-                            //이름
-                            document.querySelector("#info1").innerHTML = data.name;
-                           
-                 
-                            //이미지 세팅 //데이터값 예시 => photo : "2.사랑의요양원3호점(12823700532)"
-                            // document.querySelector("#img").src = `/resources/static/img/center/${data.photo}.jpg`;
-                            document.querySelector("#info2").innerHTML = data.hour
-                            document.querySelector("#info3").innerHTML = data.address
-                            document.querySelector("#info4").innerHTML = data.contact
-                            document.querySelector("#info5").innerHTML = data.email
-                            document.querySelector("#info6").innerHTML = data.service
-                            document.querySelector("#info7").innerHTML = data.capacity
-                            document.querySelector("#info8").innerHTML = data.sraff
-                            document.querySelector("#info9").innerHTML = data.rating
+                            //[이벤트]마커 클릭 했을시 동작.
+                            kakao.maps.event.addListener( marker, 'click' , () => {
+                                //이름
+                                document.querySelector("#center_name").innerHTML = data.name;
+                                //이미지 세팅 //데이터값 예시 => photo : "2.사랑의요양원3호점(12823700532)"
+                                // document.querySelector("#img").src = `/resources/static/img/center/${data.photo}.jpg`;
+                                document.querySelector("#info2").innerHTML = "센터 주소 : <br>"+data.address
+                                document.querySelector("#info3").innerHTML = "운영 시간 : " + data.hours
+                                document.querySelector("#info4").innerHTML = "연락처 : "+data.contact
+                                document.querySelector("#info5").innerHTML = "이메일 : " +data.email
+                                document.querySelector("#info6").innerHTML = "제공 서비스 : <br>" + data.service
+                                document.querySelector("#info7").innerHTML = "수용인원 : " + data.capacity
+                                document.querySelector("#info8").innerHTML = "직원수 : " + data.staff
+                                document.querySelector("#info9").innerHTML = "별점 : "+data.rating
+                                infowindow.open(map, marker);
 
-                            document.querySelector('.sidebarbutton').click();
-                            
-                        })  
-                        
-                        infowindow.open(map, marker);
-                        return marker;
+
+                                   document.querySelector('.사이드바버튼').click();// js에서 특정한 버튼 강제로 클릭하기
+                            })
+
+                     
+
+                        //[이벤트]맵 빈공간 클릭시 인포 윈도우 닫기
+                        kakao.maps.event.addListener( map, 'click' , () => {
+                            infowindow.close();
+                        })
+
+                       
                     }}
                     
             );//end serch

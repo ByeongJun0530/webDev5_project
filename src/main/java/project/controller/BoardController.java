@@ -24,7 +24,9 @@ public class BoardController {
     public Map<String, Object> boardFindAll(@RequestParam(defaultValue = "1") int page, @RequestParam int pageSize,
                                             @RequestParam(required = false, defaultValue = "") String keyword,
                                             @RequestParam(required = false, defaultValue = "") Integer cno)
-    {return  boardService.pagedBoards(page, pageSize, keyword, cno);}
+    {
+        return boardService.pagedBoards(page, pageSize, keyword, cno);
+    }
     // 게시물 개별 조회
     @GetMapping("/board/find.do")
     public BoardDto boardFind(@RequestParam int bno){

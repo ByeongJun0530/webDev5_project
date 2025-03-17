@@ -29,7 +29,8 @@ const onWrite = () => {
                 alert('글쓰기 성공')
                 location.href = `/board`
             }else{
-                alert('글쓰기 실패');
+                alert('글쓰기 실패 : 로그인이 필요한 서비스입니다.');
+                location.href = `/board`
             }
         })
         .catch(e => {console.log(e);})

@@ -4,27 +4,41 @@ const centerFindAll = () => {
     headers: {},
   };
 
-  fetch("/findall.do", option)
+  fetch("/center/findall.do", option)
     .then((response) => {
-      return response.formData();
+      if (!response.ok) {
+        throw new Error("네트워크 응답이 올바르지 않습니다.");
+      }
+      return response.json(); // JSON 형태로 변환
     })
-    .then((formData) => {
-      const data = [];
-      console.log("조회된 데이터: ", data);
+    .then((data) => {
+      console.log("조회된 데이터:", data);
 
-      const container = document.querySelector(".container");
+      const centerList = document.querySelector(".centerList");
 
       let html = "";
       data.forEach((v) => {
-        html += `<a href="/find.do?centerno=${v.key}" class="center">
-                      <!-- 리스트 영역 -->
-                   </a>`;
+        html += `<a class="center" href="/center/find?centerno=${v.centerno}">
+                    <div class="centerListTop">
+                      <span class="center-name">${v.name}</span>
+                      <span>${v.address}</span>
+                    </div>
+                    <div class="centerListCenter">
+                      <span>${v.service}</span>
+                    </div>
+                    <div class="centerBottom">
+                      <span>${v.hours}</span>
+                      <span>정원 :  ${v.capacity}</span>
+                      <span>요양보호사 ${v.staff}</span>
+                    </div>
+                 </a>`;
       });
-      container.innerHTML = html;
+
+      centerList.innerHTML = html;
     })
     .catch((e) => {
-      console.error(e);
-      alert("데이터 안불러와짐 콘솔 에러 확인");
+      console.error("에러 발생:", e);
+      alert("데이터를 불러오는 데 실패했습니다. 콘솔을 확인하세요.");
     });
 };
 

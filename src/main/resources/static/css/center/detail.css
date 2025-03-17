@@ -1,0 +1,27 @@
+.center-detail {
+  margin: 20px 120px;
+}
+.center-detail h1 {
+  font-size: 24px;
+}
+.center-detail p,
+.center-detail span {
+  margin: 5px 0;
+}
+.centerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.centerInfo > div {
+  display: flex;
+  flex-direction: row;
+}
+.centerInfo > div > p {
+  width: 400px;
+}
+.centerInfo > img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}

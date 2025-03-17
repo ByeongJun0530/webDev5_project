@@ -41,4 +41,11 @@ public class ReviewController {
     public boolean delete(@RequestParam int reviewno) {
         return reviewService.delete(reviewno);
     }
+
+    // 실세 사용 데이터
+    @GetMapping("/review/findbycenter.do")
+    public List<ReviewDto> findByCenter(@RequestParam int centerno) {
+        return reviewService.findByCenter(centerno);
+    }
+
 }

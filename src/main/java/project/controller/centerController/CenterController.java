@@ -30,6 +30,7 @@ public class CenterController {
         return centerService.findAll();
     }
 
+
     // 개별 센터 조회
     @GetMapping("/find.do")
     public CenterDto find(@RequestParam int centerno) {

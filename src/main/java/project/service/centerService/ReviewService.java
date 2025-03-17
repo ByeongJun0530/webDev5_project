@@ -57,4 +57,12 @@ public class ReviewService {
         }
         return false;
     }
+
+    public List<ReviewDto> findByCenter(int centerno) {
+        return reviewRepository.findByCenterEntity_Centerno(centerno)
+                .stream()
+                .map(ReviewEntity::toDto)
+                .collect(Collectors.toList());
+    }
+
 }

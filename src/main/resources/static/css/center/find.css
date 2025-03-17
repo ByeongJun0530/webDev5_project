@@ -1,0 +1,24 @@
+a.center {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  background-color: white;
+}
+.centerList > a {
+  text-decoration: none !important;
+  color: black !important;
+}
+.centerList {
+  margin: 20px 12px;
+  background-color: rgb(248, 249, 250);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.centerListTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

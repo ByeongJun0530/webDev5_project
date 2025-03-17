@@ -8,14 +8,16 @@ public class CenterViewController {
     //센터 메인
     @GetMapping("/center")
     public String center() {
-        return "center"; //
+        return "html/main/center/center.html";
     }
+
 
     // 게시판(센터) 리스트 페이지
     @GetMapping("/center/findall")
     public String centerFindall() {
-        return "center/findall";
+        return "html/main/center/findall";
     }
+
 
     // 게시판(센터) 등록 페이지
     @GetMapping("/center/upload")
@@ -26,6 +28,6 @@ public class CenterViewController {
     // 게시판(센터) 개별 조회 페이지
     @GetMapping("/center/find")
     public String centerFind() {
-        return "center/find";
+        return "html/main/center/find.html";
     }
 }

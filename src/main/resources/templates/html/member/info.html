@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 정보</title>
+    <link rel="stylesheet" href="/css/member/info.css">
+</head>
+<body>
+<!-- 헤더 -->
+<div th:replace="~{ /html/main/header.html :: header }"></div>
+
+<div class="container">
+    <div class="info-container">
+        <h1>내 정보</h1>
+
+        <!-- 알림 메시지 영역 -->
+        <div id="notification" class="notification"></div>
+
+        <div class="info-section">
+            <div class="profile-header">
+                <div class="profile-image">
+                    <div class="avatar">
+                        <span id="initials"></span>
+                    </div>
+                </div>
+                <div class="profile-title">
+                    <h2 id="user-name">사용자 이름</h2>
+                    <p id="user-email">사용자 이메일</p>
+                </div>
+            </div>
+
+            <!-- 탭 메뉴 -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="profile">기본 정보</button>
+                <button class="tab-btn" data-tab="password">비밀번호 변경</button>
+            </div>
+
+            <!-- 기본 정보 탭 -->
+            <div id="profile" class="tab-content active">
+                <form id="profileForm">
+                    <!-- 사용자 이메일을 숨겨진 필드로 저장 (비밀번호 확인에 사용) -->
+                    <input type="hidden" id="memail" name="memail">
+
+                    <div class="form-group">
+                        <label for="mname">이름</label>
+                        <input type="text" id="mname" name="mname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mphone">전화번호</label>
+                        <input type="tel" id="mphone" name="mphone" required>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">정보 수정</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 비밀번호 변경 탭 -->
+            <div id="password" class="tab-content">
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">현재 비밀번호</label>
+                        <input type="password" id="currentPassword" name="currentPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword">새 비밀번호</label>
+                        <input type="password" id="newPassword" name="newPassword" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">비밀번호 확인</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                        <span id="pwd-match-message"></span>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">비밀번호 변경</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="danger-zone">
+            <h3>계정 관리</h3>
+            <button id="logoutBtn" class="secondary-btn">로그아웃</button>
+            <button id="deleteAccountBtn" class="danger-btn">회원 탈퇴</button>
+        </div>
+    </div>
+</div>
+
+<!-- 회원 탈퇴 확인 모달 -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h3>회원 탈퇴</h3>
+        <p>정말로 회원 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.</p>
+        <div class="modal-buttons">
+            <button id="cancelDelete" class="secondary-btn">취소</button>
+            <button id="confirmDelete" class="danger-btn">탈퇴 확인</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/member/info.js"></script>
+</body>
+</html>

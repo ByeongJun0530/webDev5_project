@@ -17,8 +17,8 @@ public class MessageDto {
     private int receivermno; // 수신자
 
     // 화면 표시
-    private String sendname; // 송신자 이름/기관명
-    private String receivername; // 수신자 이름/기관명
+    private String sendmid; // 송신자 이메일
+    private String receivermid; // 수신자 이메일
 
     // dto -> entity
     public MessageEntity toEntity() {

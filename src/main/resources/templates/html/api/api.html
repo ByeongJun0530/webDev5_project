@@ -6,27 +6,40 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
+  </head>
+  <body>
+    <div class="container">
+      <!-- 헤더 -->
+      <div th:replace="~{ /html/main/header.html :: header }"></div>
+    </div>
+
+    <!-- 지도 표시   -->
+    <div id="map" style="width: 1800px; height: 700px"></div>
 
     <!-- 카카오 지도 api 시작 -->
     <script
       type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=709454abbec211096eb07f4cf2d347db"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=709454abbec211096eb07f4cf2d347db&libraries=services"
     ></script>
-  </head>
-  <body>
-    //지도 담을 영역
-    <div id="map" style="width: 500px; height: 400px"></div>
 
-    <script>
-      var container = document.getElementById("map"); //지도를 담을 영역의 DOM레퍼런스
-      var options = {
-        //지도를 생성할 때 필요한 기본 옵션
-        center: newkakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-        level: 3, //지도의 레벨(확대, 축소 정도)
-      };
-      var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-    </script>
+<!--오프캔버스 한뭉텅이-->
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel"><span id="center_name">기관 이름 들어가는 곳</span></h5>
+      </div>
 
-    <script src="/src/main/resources/static/js/api.js"></script>
+      <div class="offcanvas-body">
+        <div>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳1  </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳2 </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳3  </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳4  </p>
+          <p>기관설명들이 오는곳 기관설명들이 오는곳5  </p>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="/js/api.js"></script>
   </body>
 </html>

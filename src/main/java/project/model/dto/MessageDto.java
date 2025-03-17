@@ -25,6 +25,7 @@ public class MessageDto {
         return MessageEntity.builder()
                 .meno(this.meno)
                 .metitle(this.metitle)
+                .mecontent(this.mecontent)
                 .build();
     }
 }

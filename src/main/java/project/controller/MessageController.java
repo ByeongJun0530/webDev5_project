@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import project.model.dto.MemberDto;
 import project.model.dto.MessageDto;
-import project.service.MemberService;
 import project.service.MessageService;
 
 import java.util.List;
@@ -73,4 +71,18 @@ public class MessageController {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
+
+    // 메시지 상세 조회
+    @GetMapping("/detail.do")
+    public ResponseEntity<MessageDto> getMessageDetail(@RequestParam int meno, @RequestParam int mno) {
+        MessageDto message = messageService.findMessageById(meno, mno);
+        if(message != null) {
+            return ResponseEntity.ok(message);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    //
+
 }

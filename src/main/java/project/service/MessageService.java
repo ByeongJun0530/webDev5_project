@@ -1,6 +1,7 @@
 package project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.model.dto.MemberDto;
@@ -202,5 +203,79 @@ public class MessageService {
             return null;
         }
     }
+
+    // 단일 메시지 상세 조회 (읽음 상태 업데이트 없이)
+    @Transactional(readOnly = true)
+    public MessageDto findMessageById(int meno, int mno) {
+        MemberDto loginDto = memberService.getMyInfo();
+        if(loginDto == null || loginDto.getMno() != mno) {
+            System.out.println("메시지 상세 조회 실패 - 로그인 필요 또는 권한 없음");
+            return null;
+        }
+
+        try {
+            Optional<MessageEntity> messageOpt = messageRepository.findById(meno);
+            if(messageOpt.isPresent()) {
+                MessageEntity message = messageOpt.get();
+
+                // 접근 권한 확인 (발신자 또는 수신자만 조회 가능)
+                if(message.getSendermno().getMno() == mno || message.getReceivermno().getMno() == mno) {
+                    MessageDto dto = message.toDto();
+                    dto.setSendmid(message.getSendermno().getMemail());
+                    dto.setReceivermid(message.getReceivermno().getMemail());
+                    return dto;
+                } else {
+                    System.out.println("메시지 상세 조회 실패 - 권한 없음");
+                }
+            } else {
+                System.out.println("메시지 상세 조회 실패 - 메시지 없음");
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println("메시지 상세 조회 실패: " + e);
+            return null;
+        }
+    }
+
+
+    //웹소켓 활용 될 부분
+//    @Autowired private SimpMessagingTemplate messagingTemplate;  // WebSocket 메시지 전송 도구
+//    @Transactional
+//    public boolean send(MessageDto messageDto) {
+//        try {
+//            int mno = messageDto.getSendermno();  // 발신자 ID
+//            int receiverMno = messageDto.getReceivermno();  // 수신자 ID
+//
+//            // 발신자 확인
+//            Optional<MemberEntity> senderOpt = memberRepository.findById(mno);
+//            if (!senderOpt.isPresent()) {
+//                System.out.println("메시지 전송 실패: 발신자 없음");
+//                return false;
+//            }
+//
+//            // 수신자 확인
+//            Optional<MemberEntity> receiverOpt = memberRepository.findById(receiverMno);
+//            if (!receiverOpt.isPresent()) {
+//                System.out.println("메시지 전송 실패: 수신자 없음");
+//                return false;
+//            }
+//
+//            // 메시지 저장
+//            MessageEntity messageEntity = messageDto.toEntity();
+//            messageEntity.setSendermno(senderOpt.get());  // 발신자 저장
+//            messageEntity.setReceivermno(receiverOpt.get());  // 수신자 저장
+//            messageRepository.save(messageEntity);
+//
+//            // WebSocket으로 메시지 전송
+//            messagingTemplate.convertAndSend("/topic/messages", messageDto);
+//            System.out.println("메시지 전송 성공");
+//
+//            return true;
+//        } catch (Exception e) {
+//            System.out.println("메시지 전송 실패: " + e.getMessage());
+//            return false;
+//        }
+//    }
+
 
 }

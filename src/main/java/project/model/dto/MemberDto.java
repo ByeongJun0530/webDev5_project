@@ -1,7 +1,6 @@
 package project.model.dto;
 
 import lombok.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import project.model.entity.MemberEntity;
 
 @Getter @Setter @ToString @Builder

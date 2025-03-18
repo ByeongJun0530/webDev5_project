@@ -20,4 +20,4 @@
 ## :file_folder: 프로젝트 계획서 
 https://docs.google.com/spreadsheets/d/1_II88NN9_b6gHJnXYDjjDIeTHPTCeXBIzfdD3E0ZhJk/edit?usp=sharing
 ## :file_folder: Team ppt
-https://docs.google.com/presentation/d/15QYRtdiBGTPsyhh1YUpb7gX3T1FZ8M6z/edit?usp=sharing&ouid=117677969905623269319&rtpof=true&sd=true
+[https://docs.google.com/presentation/d/15QYRtdiBGTPsyhh1YUpb7gX3T1FZ8M6z/edit?usp=sharing&ouid=117677969905623269319&rtpof=true&sd=true](https://drive.google.com/file/d/1BSa0yohKSZYQo-U7kjMSvb9SINI3qzGm/view?usp=drive_link)

@@ -1,10 +1,18 @@
 #hr {
   color: yellowgreen;
-  height: 50px;
+  border: 10px;
+  margin: 0;
+}
+
+/* 센터 이름 중앙정렬 */
+#offcanvasScrollingLabel {
+  display: flex;
+  align-items: center;
 }
 
 #center_name {
   text-align: center;
+  text-decoration: solid;
 }
 
 #infomain {
@@ -20,6 +28,26 @@
 }
 
 /* 상세페이지 버튼 */
+#info10 {
+  align-items: center;
+}
+
+/* 오프캔버스 사진 부모 크기 */
+#info1 {
+  width: 365px;
+  height: 200px;
+  overflow: hidden;
+}
+
+/* 오프캔버스 사진 크기 */
+#img {
+  width: 350px;
+  height: 200px;
+  /* 이미지  비율 맟주기 */
+  /* object-fit: cover; */
+}
+
+/* 버튼 중앙 정렬 */
 #info10 {
   align-items: center;
 }

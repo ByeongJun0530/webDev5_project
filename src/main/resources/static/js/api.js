@@ -91,6 +91,8 @@ const findall = () => {
               infowindow.open(map, marker);
 
               document.querySelector(".사이드바버튼").click(); // js에서 특정한 버튼 강제로 클릭하기
+
+              return marker;
             });
 
             //[이벤트]맵 빈공간 클릭시 인포 윈도우 닫기

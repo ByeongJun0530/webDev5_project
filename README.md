@@ -16,7 +16,8 @@
 2. 웹소켓을 이용한 시설장과 고객의 1:1 대화 주선.
 3. 웹사이트 자체 커뮤니티를 통한 관심사 공유 및 정보 공유.
 ## :link: 프로젝트 Git & 프로젝트 영상 
-[https://github.com/UnitePdk/dev_community](https://github.com/ByeongJun0530/webDev5_project)</br>
+[(https://github.com/ByeongJun0530/webDev5_project)](https://github.com/ByeongJun0530/webDev5_project)</br>
+https://www.youtube.com/watch?v=tTzxpnud8e0&feature=youtu.be</br>
 ## :file_folder: 프로젝트 계획서 
 https://docs.google.com/spreadsheets/d/1_II88NN9_b6gHJnXYDjjDIeTHPTCeXBIzfdD3E0ZhJk/edit?usp=sharing
 ## :file_folder: Team ppt

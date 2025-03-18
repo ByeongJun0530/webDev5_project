@@ -19,3 +19,5 @@
 [https://github.com/UnitePdk/dev_community](https://github.com/ByeongJun0530/webDev5_project)</br>
 ## :file_folder: 프로젝트 계획서 
 https://docs.google.com/spreadsheets/d/1_II88NN9_b6gHJnXYDjjDIeTHPTCeXBIzfdD3E0ZhJk/edit?usp=sharing
+## :file_folder: Team ppt
+https://docs.google.com/presentation/d/15QYRtdiBGTPsyhh1YUpb7gX3T1FZ8M6z/edit?usp=sharing&ouid=117677969905623269319&rtpof=true&sd=true

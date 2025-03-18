@@ -18,3 +18,4 @@
 ## :link: 프로젝트 Git & 프로젝트 영상 
 [https://github.com/UnitePdk/dev_community](https://github.com/ByeongJun0530/webDev5_project)</br>
 ## :file_folder: 프로젝트 계획서 
+https://docs.google.com/spreadsheets/d/1_II88NN9_b6gHJnXYDjjDIeTHPTCeXBIzfdD3E0ZhJk/edit?usp=sharing

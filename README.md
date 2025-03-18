@@ -1,5 +1,5 @@
 ## :desktop_computer: 프로젝트명
-실버닷컴?
+요양넷 주간보호 돌봄
 ## :calendar: 프로젝트 기간 
 2025.02.27 ~ 2025.03.17
 ## :technologist: 팀원 소개 및 역할 
